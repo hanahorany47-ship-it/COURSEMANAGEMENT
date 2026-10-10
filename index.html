@@ -404,6 +404,254 @@ table.matrix { border-collapse: separate; border-spacing: 0; font-size: 14px; mi
 .brand .wordmark { display: block; max-width: 60vw; height: auto; }
 @media (max-width: 560px) { .brand-name { font-size: 19px; } .admin-top .wordmark, .admin-top .brand-name { display: none; } }
 
+/* ===================== חוויית המשחק ===================== */
+/* מסך הבית מעל המפה */
+.home { max-width: 960px; margin: 0 auto; padding: 12px 16px 0; }
+.home-card { background: var(--panel); border-radius: 22px; box-shadow: var(--shadow); padding: 14px; display: grid; gap: 12px; }
+.home-me { display: flex; gap: 12px; align-items: center; background: none; border: 0; padding: 0; text-align: start; cursor: pointer; color: inherit; min-width: 0; }
+.hface { width: 58px; height: 58px; border-radius: 18px; background: #1C2457; border: 3px solid var(--accent); overflow: hidden; flex: none; display: grid; place-items: center; }
+.hface svg { width: 58px; height: 58px; }
+.hwho { display: grid; gap: 2px; min-width: 0; }
+.hwho b { font-size: 18px; line-height: 1.2; }
+.xpbar { display: block; width: min(220px, 50vw); height: 9px; border-radius: 9px; background: var(--panel-2); overflow: hidden; border: 1px solid var(--line); }
+.xpbar i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), #8C6BFF); }
+.home-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; }
+.hstat { display: flex; align-items: center; gap: 10px; background: var(--panel-2); border: 1px solid var(--line); border-radius: 16px; padding: 10px 12px; text-align: start; color: inherit; min-width: 0; }
+button.hstat { cursor: pointer; }
+button.hstat:hover { border-color: var(--accent); }
+.hstat .coin { width: 36px; height: 36px; border-radius: 12px; background: var(--gold-soft); color: var(--gold); display: grid; place-items: center; flex: none; }
+.hstat .coin svg { width: 20px; height: 20px; }
+.hstat b { font-size: 20px; display: block; line-height: 1.1; }
+.hstat > span:last-child { display: grid; min-width: 0; }
+.hstat.ring svg { width: 52px; height: 52px; flex: none; }
+.hstat .rbg { fill: none; stroke: var(--line); stroke-width: 8; }
+.hstat .rfg { fill: none; stroke: var(--accent); stroke-width: 8; stroke-linecap: round; transition: stroke-dasharray .8s; }
+.home-acts { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.home-acts .btn svg { width: 18px; height: 18px; }
+.btn.sm { min-height: 38px; padding: 6px 14px; font-size: 15px; }
+.snd-row { display: inline-flex; gap: 6px; margin-inline-start: auto; }
+.ib { width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel-2); display: grid; place-items: center; cursor: pointer; color: inherit; }
+.ib svg { width: 20px; height: 20px; }
+.ib[aria-pressed="false"] { opacity: .4; }
+.gboard { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.gboard li { display: grid; grid-template-columns: 26px 1fr auto; gap: 8px; padding: 6px 10px; border-radius: 10px; }
+.gboard li.me { background: var(--accent-soft); font-weight: 700; }
+.gboard .rk { font-family: var(--f-display); color: var(--muted); text-align: center; }
+.journal .jentry { border-top: 1px solid var(--line); padding-top: 10px; display: grid; gap: 4px; }
+@media print {
+  body.printing-journal > *:not(.overlay) { display: none !important; }
+  body.printing-journal .overlay { position: static; background: none; display: block; }
+  body.printing-journal .modal { box-shadow: none; max-height: none; width: auto; }
+  body.printing-journal .modal .x, body.printing-journal #jPrint { display: none !important; }
+}
+
+/* החדר: עולם משחק כהה וקבוע בכוונה, עם צבעים מפורשים */
+.room-ov, .gpan-ov { --g-night: #0D1230; --g-panel: #1C2457; --g-panel2: #252F6E; --g-ink: #F3F4FF; --g-muted: #AEB4E0; --g-neon: #3FE0D0;
+  --g-gold: #FFC94D; --g-gold-ink: #3A2A00; --g-pink: #FF5C9A; --g-ok: #45E08F; color: var(--g-ink); }
+.room-ov { position: fixed; inset: 0; z-index: 60; background: var(--g-night); overflow: auto; padding: env(safe-area-inset-top, 0px) 16px calc(16px + env(safe-area-inset-bottom, 0px)); }
+.room { max-width: 1100px; margin: 0 auto; display: grid; gap: 12px; position: relative; padding-block: 10px; }
+.room-hud { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.rh-title { display: grid; flex: 1; min-width: 140px; line-height: 1.25; }
+.rh-title b { font-family: var(--f-display); font-weight: 400; color: var(--g-neon); }
+.rh-title span { font-size: 15px; color: var(--g-muted); }
+.rh-right { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.room-ov .ib, .gpan-ov .ib { background: var(--g-panel); border-color: var(--g-panel2); color: var(--g-ink); }
+.code { display: flex; gap: 4px; direction: ltr; }
+.code span { width: 26px; height: 32px; border-radius: 8px; background: var(--g-panel); border: 2px solid var(--g-panel2); display: grid; place-items: center; font-family: var(--f-display); color: var(--g-muted); font-variant-numeric: tabular-nums; }
+.code span.got { border-color: var(--g-gold); color: var(--g-gold); animation: gpop .5s; }
+.code.big { justify-content: center; gap: 8px; margin: 10px 0; }
+.code.big span { width: 46px; height: 56px; font-size: 26px; }
+@keyframes gpop { 50% { transform: scale(1.35); } }
+.coins { display: inline-flex; align-items: center; gap: 6px; background: var(--g-gold); color: var(--g-gold-ink); font-weight: 800; border-radius: 99px; padding: 6px 14px; }
+.coins svg { width: 18px; height: 18px; fill: currentColor; }
+.scene { border-radius: 26px; overflow: hidden; border: 2px solid var(--g-panel2); box-shadow: 0 20px 60px rgba(0,0,0,.5); background: #151C45; }
+.room-svg { display: block; width: 100%; height: auto; }
+.room-title { font-family: var(--f-display); font-size: 26px; fill: #AEB4E0; }
+.hot { cursor: pointer; }
+.hot:focus { outline: none; }
+.hot .glow { opacity: 0; transition: opacity .25s; }
+.hot:hover .glow, .hot:focus-visible .glow, .hot.pulse .glow { opacity: 1; }
+.hot .tag { fill: #FFC94D; }
+.hot .tagt { font-family: var(--f-body); font-weight: 800; font-size: 22px; fill: #3A2A00; }
+.hot.done .tag { fill: #45E08F; }
+.hot .ring { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.hot.pulse .ring { animation: gring 1.6s infinite; }
+@keyframes gring { 0% { opacity: .9; transform: scale(.6); } 100% { opacity: 0; transform: scale(1.7); } }
+.chest.ready .glow { opacity: 1; animation: gbreathe 1.4s ease-in-out infinite alternate; }
+@keyframes gbreathe { to { opacity: .45; } }
+.lock-txt { font-family: var(--f-display); font-size: 22px; fill: #3A2A00; }
+.lock { transition: transform .6s, opacity .6s; }
+.lock.gone { transform: translateY(40px); opacity: 0; }
+.lid { transform-box: fill-box; transform-origin: 50% 100%; transition: transform 1s cubic-bezier(.3,1.5,.5,1); }
+.lid.open { transform: rotate(-24deg) translate(-30px, -40px); }
+.rays { opacity: 0; transition: opacity .8s; }
+.rays.on { opacity: 1; }
+.rays.on > g { animation: gspin 9s linear infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+@keyframes gspin { to { transform: rotate(360deg); } }
+.avatar { transition: transform 1s cubic-bezier(.45,.05,.3,1); }
+.avatar.walk .legs { animation: gwalk .28s infinite alternate; }
+@keyframes gwalk { to { transform: translateY(-6px); } }
+.twinkle { animation: gtw 2.4s infinite alternate; }
+@keyframes gtw { to { opacity: .2; } }
+.float { animation: gfl 3s ease-in-out infinite alternate; transform-box: fill-box; }
+@keyframes gfl { to { transform: translateY(-8px); } }
+.tunnel path { stroke-dasharray: 30 70; animation: gtun 1.2s linear infinite; }
+@keyframes gtun { to { stroke-dashoffset: -100; } }
+.bubble { position: absolute; max-width: min(300px, 70%); background: #fff; color: #111633; border-radius: 18px; padding: 9px 14px; font-weight: 600; font-size: 15px; box-shadow: 0 10px 30px rgba(0,0,0,.35); pointer-events: none; z-index: 2; }
+.bubble.pop { animation: gbin .35s cubic-bezier(.2,1.4,.4,1); }
+@keyframes gbin { from { transform: scale(.6); opacity: 0; } }
+.room-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
+.mbtn { display: flex; align-items: center; gap: 10px; background: var(--g-panel); border: 2px solid var(--g-panel2); border-radius: 16px; padding: 10px 12px; text-align: start; min-width: 0; color: var(--g-ink); cursor: pointer; }
+.mbtn:hover { border-color: var(--g-neon); }
+.mbtn .n { width: 30px; height: 30px; border-radius: 10px; background: var(--g-panel2); display: grid; place-items: center; font-family: var(--f-display); flex: none; }
+.mbtn.done { border-color: var(--g-ok); }
+.mbtn.done .n { background: var(--g-ok); color: #06331C; }
+.mbtn.chest .n { background: var(--g-gold); color: var(--g-gold-ink); }
+.mbtn .t { min-width: 0; font-size: 14px; font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; }
+.mbtn small { display: block; color: var(--g-muted); font-weight: 400; font-size: 12px; }
+.room-about { background: var(--g-panel); border-radius: 16px; padding: 10px 14px; color: var(--g-muted); }
+.room-about summary { cursor: pointer; color: var(--g-ink); font-weight: 700; }
+.prevbar { position: sticky; top: 0; z-index: 3; background: #FF9A57; color: #2A1300; border-radius: 12px; padding: 8px 12px; font-weight: 700; font-size: 14px; text-align: center; margin-top: 8px; }
+
+/* חלונית משחק */
+.gpan-ov { position: fixed; inset: 0; z-index: 80; background: rgba(5,8,25,.72); display: grid; place-items: center; padding: 16px; overflow: auto; }
+.gpan { width: min(560px, 100%); background: linear-gradient(160deg, var(--g-panel2), var(--g-panel)); border: 2px solid var(--g-neon); border-radius: 26px;
+  box-shadow: 0 0 0 6px rgba(63,224,208,.12), 0 30px 80px rgba(0,0,0,.6); padding: 22px; display: grid; gap: 12px; animation: gpin .45s cubic-bezier(.2,1.3,.4,1); max-height: calc(100dvh - 32px); overflow: auto; }
+.gpan.wide { width: min(720px, 100%); }
+@keyframes gpin { from { transform: translateY(30px) scale(.92); opacity: 0; } }
+.gpan h2 { font-size: 26px; color: var(--g-ink); }
+.gpan h3 { font-size: 17px; }
+.gpan a { color: var(--g-neon); }
+.kick { font-size: 13px; font-weight: 800; letter-spacing: .05em; color: var(--g-neon); }
+.gmuted { color: var(--g-muted); }
+.glabel { font-weight: 700; font-size: 14px; }
+.ginput { width: 100%; background: rgba(0,0,0,.25); border: 2px solid var(--g-panel2); border-radius: 14px; color: var(--g-ink); padding: 11px 14px; font: inherit; }
+.ginput:focus { outline: none; border-color: var(--g-neon); }
+.gcheck { display: flex; gap: 10px; align-items: center; cursor: pointer; }
+.gcheck input { width: 20px; height: 20px; accent-color: #3FE0D0; flex: none; }
+.grow { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.grow.end { justify-content: space-between; }
+.gbtn { border: 0; border-radius: 14px; padding: 11px 18px; font-weight: 800; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; font: inherit; font-weight: 800; }
+.gbtn svg { width: 18px; height: 18px; }
+.gbtn.sm { padding: 8px 14px; font-size: 15px; }
+.gbtn.go { background: var(--g-neon); color: #062A27; }
+.gbtn.ok { background: var(--g-ok); color: #06331C; }
+.gbtn.gold { background: var(--g-gold); color: var(--g-gold-ink); }
+.gbtn.ghost { background: transparent; border: 2px solid var(--g-panel2); color: var(--g-muted); }
+.gbtn.link { background: var(--g-panel2); color: var(--g-ink); }
+.gbtn:disabled { opacity: .4; cursor: not-allowed; }
+.gpan .err { color: #FF9A8A; }
+.avs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+.av { background: var(--g-panel); border: 3px solid var(--g-panel2); border-radius: 16px; padding: 4px; cursor: pointer; aspect-ratio: 1; max-width: 100%; display: grid; place-items: center; }
+.av svg { width: 100%; height: auto; }
+.av[aria-checked="true"] { border-color: var(--g-gold); box-shadow: 0 0 0 4px rgba(255,201,77,.2); }
+.swatches { display: flex; gap: 8px; flex-wrap: wrap; }
+.sw { width: 36px; height: 36px; border-radius: 50%; border: 3px solid transparent; cursor: pointer; }
+.sw[aria-checked="true"] { border-color: #fff; }
+.gitem { border: 2px solid var(--g-panel2); border-radius: 16px; padding: 12px; display: grid; gap: 10px; background: rgba(0,0,0,.15); }
+.gitem.done { border-color: var(--g-ok); }
+.gi-head { display: flex; gap: 10px; align-items: center; min-width: 0; }
+.gi-ic { width: 38px; height: 38px; border-radius: 12px; background: var(--g-panel2); display: grid; place-items: center; flex: none; color: var(--g-neon); }
+.gi-ic svg { width: 20px; height: 20px; }
+.gi-tx { display: grid; min-width: 0; }
+.gi-tx span { color: var(--g-muted); font-size: 13px; }
+.gitem .embed { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px; max-width: 100%; }
+.gchecks { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.gchecks input { position: absolute; opacity: 0; }
+.gchecks label { display: flex; gap: 12px; align-items: flex-start; border: 2px solid var(--g-panel2); border-radius: 16px; padding: 12px; cursor: pointer; background: rgba(0,0,0,.15); }
+.gchecks .box { width: 28px; height: 28px; border-radius: 9px; border: 2px solid var(--g-muted); display: grid; place-items: center; color: transparent; flex: none; transition: all .25s; }
+.gchecks .box svg { width: 16px; height: 16px; }
+.gchecks input:checked + label { border-color: var(--g-ok); }
+.gchecks input:checked + label .box { background: var(--g-ok); border-color: var(--g-ok); color: #06331C; transform: rotate(-8deg) scale(1.1); }
+.gchecks input:focus-visible + label { outline: 3px solid var(--g-gold); }
+.tubes { display: flex; gap: 10px; justify-content: center; }
+.tube { width: 22px; height: 60px; border-radius: 0 0 12px 12px; border: 3px solid #C9F7F2; border-top: 0; background: linear-gradient(transparent 100%, #3FE0D0 0); transition: background .5s; }
+.tube.on { background: linear-gradient(transparent 30%, #3FE0D0 30%); box-shadow: 0 0 14px #3FE0D0; }
+.gok { display: flex; gap: 8px; align-items: center; color: var(--g-ok); font-weight: 700; }
+.gok svg { width: 20px; height: 20px; }
+.gfb { display: flex; gap: 10px; background: rgba(69,224,143,.12); border: 1px solid var(--g-ok); border-radius: 16px; padding: 12px; }
+.gfb-pic { width: 36px; height: 36px; border-radius: 50%; background: #8C6BFF; display: grid; place-items: center; font-weight: 800; flex: none; }
+.okc { color: var(--g-ok); }
+.show { display: grid; gap: 12px; }
+.timer { height: 12px; border-radius: 9px; background: rgba(0,0,0,.3); overflow: hidden; }
+.timer i { display: block; height: 100%; background: linear-gradient(90deg, #45E08F, #FFC94D, #FF5C9A); width: 100%; }
+.qn { font-family: var(--f-display); font-size: 22px; line-height: 1.35; }
+.score { font-family: var(--f-display); color: var(--g-gold); }
+.tiles { display: grid; gap: 8px; }
+.tile { display: flex; gap: 12px; align-items: center; border: 0; border-radius: 16px; padding: 13px; text-align: start; font-weight: 600; color: #fff; cursor: pointer; font: inherit; font-weight: 600; }
+.tile b { width: 34px; height: 34px; border-radius: 10px; background: rgba(255,255,255,.22); display: grid; place-items: center; flex: none; font-family: var(--f-display); font-weight: 400; }
+.tile.c0 { background: #6A4FE8; } .tile.c1 { background: #D63C74; } .tile.c2 { background: #168F8A; } .tile.c3 { background: #C77A12; }
+.tile.gone { opacity: .15; pointer-events: none; }
+.tile.picked { outline: 3px solid #fff; }
+.tile.right { outline: 4px solid var(--g-ok); animation: gtile .5s; }
+@keyframes gtile { 50% { transform: scale(1.03); } }
+.tile.wrong { opacity: .45; animation: gshake .4s; }
+@keyframes gshake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+.life { display: flex; gap: 8px; }
+.life button { border: 2px solid var(--g-gold); background: transparent; color: var(--g-gold); border-radius: 99px; padding: 6px 14px; font-weight: 800; cursor: pointer; }
+.life button:disabled { opacity: .3; cursor: not-allowed; }
+.explain { background: rgba(0,0,0,.25); border-radius: 14px; padding: 10px 14px; font-size: 15px; }
+.gpan .spinner { margin: 20px auto; }
+.badge-land { justify-self: center; animation: gland 1s cubic-bezier(.2,1.4,.4,1); color: var(--g-gold); }
+.badge-land > svg { width: 120px; height: 120px; }
+@keyframes gland { from { transform: translateY(-120px) scale(.3) rotate(-40deg); opacity: 0; } }
+.grate { display: flex; flex-wrap: wrap; gap: 6px; }
+.grate button { width: 38px; height: 38px; border-radius: 11px; border: 2px solid var(--g-panel2); background: rgba(0,0,0,.2); font-weight: 800; color: var(--g-ink); cursor: pointer; }
+.grate button.on { background: var(--g-gold); border-color: var(--g-gold); color: var(--g-gold-ink); }
+.g2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.gbox { border: 1px solid var(--g-panel2); border-radius: 16px; padding: 12px; display: grid; gap: 8px; align-content: start; min-width: 0; background: rgba(0,0,0,.15); }
+.gpan .gboard li.me { background: rgba(63,224,208,.18); }
+.gpan .gboard .rk { color: var(--g-muted); }
+.post { display: flex; gap: 8px; align-items: center; background: rgba(0,0,0,.2); border-radius: 12px; padding: 8px 10px; font-size: 14px; }
+.post > div { flex: 1; min-width: 0; display: grid; }
+.post b { font-size: 13px; color: var(--g-muted); font-weight: 600; }
+.heart { border: 0; background: none; display: flex; align-items: center; gap: 4px; color: var(--g-muted); cursor: pointer; font: inherit; }
+.heart svg { width: 20px; height: 20px; }
+.heart.on { color: var(--g-pink); }
+.lvlup { display: grid; justify-items: center; gap: 8px; text-align: center; }
+.lvlup > svg { width: 90px; height: 90px; color: var(--g-gold); animation: gland .8s cubic-bezier(.2,1.4,.4,1); }
+.lvlup h2 { color: var(--g-neon); }
+.recap-face { display: flex; align-items: center; gap: 12px; justify-content: center; }
+.recap-face svg { width: 70px; height: 70px; background: var(--g-panel); border-radius: 20px; border: 3px solid var(--g-neon); }
+.recap { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; }
+.rstat { background: rgba(0,0,0,.2); border-radius: 16px; padding: 12px; display: grid; justify-items: center; text-align: center; animation: gpin .6s both; }
+.rstat b { font-family: var(--f-display); font-weight: 400; font-size: 32px; color: var(--g-gold); }
+.rstat span { font-size: 13px; color: var(--g-muted); }
+.recap-badges { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.recap-badges .rb { animation: gland .7s both; }
+.float-pts { position: fixed; z-index: 120; pointer-events: none; font-family: var(--f-display); font-size: 26px; color: #FFC94D; text-shadow: 0 2px 0 #000; animation: gup 1.1s ease-out forwards; }
+@keyframes gup { to { transform: translateY(-80px); opacity: 0; } }
+.toast { z-index: 130; }
+#confetti { z-index: 140; }
+@media (max-width: 560px) {
+  .avs { grid-template-columns: repeat(3, 1fr); }
+  .code span { width: 22px; height: 28px; font-size: 14px; }
+  .bubble { font-size: 13px; padding: 7px 10px; }
+  .gpan { padding: 16px; }
+  .gpan h2 { font-size: 22px; }
+  .snd-row { margin-inline-start: 0; }
+  .home-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .hstat { flex-direction: column; align-items: center; text-align: center; padding: 8px 6px; gap: 4px; }
+  .hstat .coin { display: none; }
+  .hstat b { font-size: 17px; }
+  .hstat .small { font-size: 12px; line-height: 1.3; }
+  .hstat.ring svg { width: 40px; height: 40px; }
+  .hstat > span:last-child { justify-items: center; }
+  .home-card { padding: 12px; gap: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .room-ov *, .gpan-ov *, .home * { animation: none !important; transition: none !important; }
+}
+/* תצוגת משתתף ומשוב (מרצה) */
+.pv-bar { position: sticky; top: 0; z-index: 30; display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; justify-content: center; background: #FF9A57; color: #2A1300; padding: 8px 16px; font-size: 15px; }
+.pv-bar .btn { background: #fff; color: #2A1300; border-color: #fff; }
+.pv-bar .check { display: inline-flex; gap: 6px; align-items: center; }
+.pts-chip { display: inline-flex; align-items: center; gap: 2px; font-size: 12px; font-weight: 700; color: var(--gold); }
+.pts-chip svg { width: 13px; height: 13px; }
+.cellbtn { background: none; border: 0; padding: 0; cursor: pointer; position: relative; display: inline-grid; justify-items: center; }
+.fb-dot { position: absolute; top: -3px; inset-inline-end: -5px; width: 10px; height: 10px; border-radius: 50%; background: var(--ok); border: 2px solid var(--panel); }
+.fb-dot.half { background: var(--gold); }
+
 </style>
 </head>
 <body>
@@ -411,6 +659,7 @@ table.matrix { border-collapse: separate; border-spacing: 0; font-size: 14px; mi
 <main id="loginView" class="login" dir="rtl" hidden></main>
 <div id="appView" dir="rtl" hidden>
   <header class="topbar" id="appTop"></header>
+  <section id="home" class="home" aria-label="מסך הבית"></section>
   <div id="map" class="map theme-space">
     <div class="map-bg"></div>
     <div class="map-inner" id="mapInner"></div>
@@ -990,7 +1239,220 @@ window.CM_AR = {
 "ERR_NO_TEMPLATE": "لم يُعثر على القالب.",
 "ERR_SELF": "لا يمكن تغيير حساب المديرة.",
 "ERR_SERVER": "خطأ مؤقت في الخادم. حاولوا مرة أخرى بعد قليل.",
-"ERR_WEAK_PASSWORD": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل."
+"ERR_WEAK_PASSWORD": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل.",
+"מוזיקת רקע": "موسيقى خلفية",
+"צלילים": "أصوات",
+"קול מעודד": "صوت مشجّع",
+"הקול המעודד פועל": "الصوت المشجّع يعمل",
+"עלית דרגה!": "ارتقيت درجة!",
+"מעכשיו את/ה {l}.": "من الآن أنت {l}.",
+"ממשיכים!": "نتابع!",
+"עלית דרגה! מעכשיו את/ה {l}": "ارتقيت درجة! من الآن أنت {l}",
+"הדמות שלי": "شخصيتي",
+"מי יוצא/ת למשימה?": "من سينطلق في المهمة؟",
+"בחרו דמות. היא תלווה אתכם בכל החדרים במסע.": "اختاروا شخصية. سترافقكم في كل غرف الرحلة.",
+"סגנון הדמות": "أسلوب الشخصية",
+"גוון עור": "لون البشرة",
+"גוון {n}": "لون {n}",
+"צבע החולצה": "لون القميص",
+"צבע {n}": "لون {n}",
+"כינוי במשחק (רשות)": "اسم مستعار في اللعبة (اختياري)",
+"להופיע בלוח המובילים של הקבוצה": "الظهور في لوحة المتصدرين للمجموعة",
+"שמירה ויציאה למשימה": "حفظ والانطلاق في المهمة",
+"היום!": "اليوم!",
+"בעוד פחות משעתיים": "خلال أقل من ساعتين",
+"בעוד {h} שעות": "خلال {h} ساعات",
+"מחר": "غدًا",
+"בעוד {d} ימים": "خلال {d} أيام",
+"הוספה ליומן": "إضافة إلى التقويم",
+"יומן גוגל": "تقويم جوجل",
+"קובץ ליומן (אייפון, אאוטלוק)": "ملف للتقويم (آيفون، أوتلوك)",
+"ביומן תופיע גם תזכורת חצי שעה לפני המפגש.": "سيظهر في التقويم أيضًا تذكير قبل اللقاء بنصف ساعة.",
+"עוד {n} נקודות ל{l}": "{n} نقاط أخرى لدرجة {l}",
+"הדרגה הגבוהה ביותר!": "أعلى درجة!",
+"נקודות": "نقاط",
+"מקום {r} מתוך {n}": "المرتبة {r} من {n}",
+"חדרים הושלמו": "غرف مكتملة",
+"יש לך משוב חדש מהמרצה": "لديك ملاحظة جديدة من المحاضر/ة",
+"להמשיך: תחנה {n}": "متابعة: المحطة {n}",
+"יומן הלמידה שלי": "دفتر تعلّمي",
+"המסע שלי: הסיכום": "رحلتي: الملخّص",
+"המסע שלי": "رحلتي",
+"חוקר/ת מסתורי/ת": "باحث/ة غامض/ة",
+"את/ה": "أنت",
+"לוח המובילים": "لوحة المتصدرين",
+"מקום {r} מתוך {n} בקבוצה.": "المرتبة {r} من {n} في المجموعة.",
+"איך צוברים נקודות?": "كيف تُجمع النقاط؟",
+"אפשר לבחור להסתתר בלוח דרך \"הדמות שלי\".": "يمكن اختيار الاختفاء من اللوحة عبر \"شخصيتي\".",
+"יומן הלמידה של {n}": "دفتر التعلّم الخاص بـ {n}",
+"עדיין לא נכתב.": "لم يُكتب بعد.",
+"היומן עוד ריק. בסוף כל חדר, אחרי פתיחת תיבת האוצר, כותבים כאן מה לוקחים לכיתה.": "الدفتر فارغ بعد. في نهاية كل غرفة، بعد فتح صندوق الكنز، تكتبون هنا ما تأخذونه إلى الصف.",
+"הדפסה או שמירה כ-PDF": "طباعة أو حفظ كـ PDF",
+"{n}, זה המסע שלך עד עכשיו": "{n}، هذه رحلتك حتى الآن",
+"העתקת סיכום לשיתוף": "نسخ ملخّص للمشاركة",
+"חזרה למפה": "العودة إلى الخريطة",
+"כל הכבוד {n}! תראו כמה למדת": "أحسنت {n}! انظر/ي كم تعلّمت",
+"המסע שלי ב-{c}:": "رحلتي في {c}:",
+"דרגה: {l}": "الدرجة: {l}",
+"משימה {n}": "المهمة {n}",
+"הושלמה": "مكتملة",
+"החדר של תחנה {n}": "غرفة المحطة {n}",
+"תיבת האוצר": "صندوق الكنز",
+"נעולה": "مقفل",
+"למפה": "إلى الخريطة",
+"ספרות הקוד": "أرقام الرمز",
+"מוכנה לפתיחה!": "جاهز للفتح!",
+"צריך את כל {n} הספרות": "تحتاجون كل الأرقام الـ {n}",
+"מצב תצוגת מרצה: כך המשתתפים רואים את החדר. שום דבר לא נשמר.": "وضع عرض المحاضر/ة: هكذا يرى المشاركون الغرفة. لا يُحفظ شيء.",
+"המשימות בחדר": "المهام في الغرفة",
+"החדר הזה כבר פתוח. אפשר לחזור לכל משימה.": "هذه الغرفة مفتوحة. يمكن العودة إلى أي مهمة.",
+"מצאו את {n} הספרות ופתחו את תיבת האוצר!": "اعثروا على الأرقام الـ {n} وافتحوا صندوق الكنز!",
+"כל הספרות אצלך! לתיבה!": "كل الأرقام معك! إلى الصندوق!",
+"קיבלת ספרה לקוד: {d}": "حصلت على رقم للرمز: {d}",
+"יש! עוד {n} ספרות לתיבה": "رائع! {n} أرقام أخرى للصندوق",
+"הושלם": "مكتمل",
+"סיימתי! תנו לי ספרה": "أنهيت! أعطوني رقمًا",
+"פתחו את החומר, ואחרי שסיימתם לחצו \"סיימתי\" כדי לקבל ספרה לקוד.": "افتحوا المادة، وبعد الانتهاء اضغطوا \"أنهيت\" للحصول على رقم للرمز.",
+"בארון יש כמה חומרים. כל חומר שמסיימים נותן ספרה לקוד.": "في الخزانة عدة مواد. كل مادة تُنهونها تعطي رقمًا للرمز.",
+"חזרה לחדר": "العودة إلى الغرفة",
+"המשימה הזו כבר הושלמה": "هذه المهمة مكتملة",
+"המשימה של המפגש": "مهمة اللقاء",
+"כל שלב שמסמנים מדליק מבחנה. כשכל השלבים מסומנים, מקבלים ספרה לקוד.": "كل خطوة تُعلَّم تُضيء أنبوب اختبار. عند تعليم كل الخطوات تحصلون على رقم للرمز.",
+"המרצה": "المحاضر/ة",
+"נבדק": "تم الفحص",
+"זה הרגע לשגר את התוצר!": "هذه لحظة إطلاق المنتَج!",
+"הוגש ב-{d}": "قُدّم في {d}",
+"בזמן!": "في الوقت!",
+"לשתף את התוצר בקיר ההשראה של הקבוצה": "مشاركة المنتَج في جدار الإلهام للمجموعة",
+"עדכון ושיגור מחדש": "تحديث وإطلاق من جديد",
+"3, 2, 1, שיגור!": "3، 2، 1، انطلاق!",
+"הוגש בזמן! עוד 15 נקודות בונוס": "قُدّم في الوقت! 15 نقطة إضافية",
+"התוצר שוגר! כל הכבוד": "تم إطلاق المنتَج! أحسنت",
+"השעשועון של החוקרים": "مسابقة الباحثين",
+"{n} שאלות, {s} שניות לכל שאלה. יש לכם שני גלגלי הצלה: 50:50 ורמז. ציון עובר: {p}.": "{n} أسئلة، {s} ثانية لكل سؤال. لديكم وسيلتا مساعدة: 50:50 وتلميح. علامة النجاح: {p}.",
+"הציון הגבוה שלך עד עכשיו: {b}": "أعلى علامة لك حتى الآن: {b}",
+"מתחילים!": "نبدأ!",
+"שאלה {i} מתוך {n}": "السؤال {i} من {n}",
+"{r} נכונות": "{r} صحيحة",
+"רמז": "تلميح",
+"רמז:": "تلميح:",
+"נכון מאוד!": "صحيح جدًا!",
+"מצוין!": "ممتاز!",
+"בול!": "بالضبط!",
+"נגמר הזמן": "انتهى الوقت",
+"כמעט!": "تقريبًا!",
+"נכון!": "صحيح!",
+"נגמר הזמן.": "انتهى الوقت.",
+"התשובה הנכונה מסומנת בירוק.": "الإجابة الصحيحة مُعلَّمة بالأخضر.",
+"לתוצאות": "إلى النتائج",
+"לשאלה הבאה": "إلى السؤال التالي",
+"עברת את השעשועון!": "اجتزت المسابقة!",
+"כמעט! הציון העובר הוא {p}. אפשר לנסות שוב, ונשמר הציון הגבוה.": "تقريبًا! علامة النجاح هي {p}. يمكن المحاولة مرة أخرى، وتُحفظ أعلى علامة.",
+"עוד ניסיון": "محاولة أخرى",
+"אין שאלות בשעשועון הזה.": "لا توجد أسئلة في هذه المسابقة.",
+"התיבה נעולה. חסרות עוד {n} ספרות": "الصندوق مقفل. ينقص {n} أرقام",
+"הקלידו את הקוד": "اكتبوا الرمز",
+"אספתם את כל הספרות. סובבו את המנעול!": "جمعتم كل الأرقام. أديروا القفل!",
+"עוד רגע": "لحظة",
+"פתיחת התיבה": "فتح الصندوق",
+"כל הכבוד! פתחת את התיבה וקיבלת את התג {b}": "أحسنت! فتحت الصندوق وحصلت على وسام {b}",
+"כל הכבוד! פתחת את התיבה": "أحسنت! فتحت الصندوق",
+"עדיין אין תוצרים משותפים בחדר הזה. אפשר להיות הראשונים!": "لا توجد بعد منتجات مشتركة في هذه الغرفة. يمكنكم أن تكونوا الأوائل!",
+"לצפייה בתוצר": "لعرض المنتَج",
+"לב לתוצר של {n}": "قلب لمنتَج {n}",
+"התג \"{b}\" שלך!": "وسام \"{b}\" لك!",
+"פתחת את החדר!": "فتحت الغرفة!",
+"צברת {p} נקודות בחדר הזה.": "جمعت {p} نقاط في هذه الغرفة.",
+"יומן החוקר/ת: מה תיקחו מהחדר הזה לכיתה שלכם?": "دفتر الباحث/ة: ماذا ستأخذون من هذه الغرفة إلى صفّكم؟",
+"למשל: אתן לתלמידים לשאול את ה-AI, ונבדוק יחד את התשובות בניסוי.": "مثلًا: سأدع الطلاب يسألون الذكاء الاصطناعي، ونفحص الإجابات معًا بتجربة.",
+"עדכון היומן": "تحديث الدفتر",
+"שמירה ביומן": "حفظ في الدفتر",
+"איך היה המפגש? (1 עד 10)": "كيف كان اللقاء؟ (1 إلى 10)",
+"דירוג המפגש": "تقييم اللقاء",
+"קיר ההשראה": "جدار الإلهام",
+"לשתף גם את התוצר שלי": "مشاركة منتَجي أيضًا",
+"חזרה למפת המסע": "العودة إلى خريطة الرحلة",
+"נשמר ביומן": "حُفظ في الدفتر",
+"נשמר ביומן. כל הכבוד!": "حُفظ في الدفتر. أحسنت!",
+"התוצר שלך מופיע עכשיו בקיר": "منتَجك يظهر الآن على الجدار",
+"התוצר הוסר מהקיר": "أُزيل المنتَج من الجدار",
+"תצוגת משתתף": "عرض المشارك",
+"שמרו קודם את השינויים, ואז פתחו את התצוגה.": "احفظوا التغييرات أولًا، ثم افتحوا العرض.",
+"יש משוב": "توجد ملاحظة",
+"צפייה בהגשה ומשוב": "عرض التقديم والملاحظة",
+"הסבר אחרי התשובה (רשות)": "شرح بعد الإجابة (اختياري)",
+"למה זו התשובה הנכונה? יוצג אחרי שעונים.": "لماذا هذه هي الإجابة الصحيحة؟ يظهر بعد الإجابة.",
+"רמז (רשות)": "تلميح (اختياري)",
+"רמז קטן שאפשר לבקש בשעשועון": "تلميح صغير يمكن طلبه في المسابقة",
+"ההגשה": "التقديم",
+"שותף בקיר ההשראה": "مُشارَك في جدار الإلهام",
+"יומן החוקר/ת": "دفتر الباحث/ة",
+"משוב למשתלם/ת (יוצג בתחנה שלו/ה)": "ملاحظة للمشارك/ة (تظهر في محطته/ا)",
+"למשל: שאלת חקר מצוינת! נסו להוסיף גם משתנה קבוע.": "مثلًا: سؤال بحث ممتاز! حاولوا إضافة متغيّر ثابت أيضًا.",
+"לסמן כ\"נבדק\"": "التعليم كـ \"تم الفحص\"",
+"שליחת משוב": "إرسال الملاحظة",
+"המשוב נשלח. המשתלם/ת יראה אותו בתחנה.": "أُرسلت الملاحظة. سيراها المشارك/ة في المحطة.",
+"קבוצות ותצוגה": "مجموعات وعرض",
+"הקבוצות של {n}": "مجموعات {n}",
+"התצוגה מראה את התוכן והעיצוב בלבד, בלי שמות ונתונים של משתתפים.": "العرض يُظهر المحتوى والتصميم فقط، بدون أسماء أو بيانات المشاركين.",
+"{p} משתלמים": "{p} مشاركين",
+"תצוגה": "عرض",
+"תצוגת מרצה": "عرض المحاضر/ة",
+"כך המשתתפים רואים את הקבוצה. אפשר לנסות הכול, ושום דבר לא נשמר.": "هكذا يرى المشاركون المجموعة. يمكن تجربة كل شيء، ولا يُحفظ شيء.",
+"לפתוח את כל התחנות": "فتح كل المحطات",
+"סיום התצוגה": "إنهاء العرض",
+"קוקו": "كعكة شعر",
+"שיער ארוך": "شعر طويل",
+"שיער קצר": "شعر قصير",
+"מתולתל": "مجعّد",
+"חיג׳אב": "حجاب",
+"כיפה": "قلنسوة",
+"צפייה בחומר או פתיחת קישור: 10": "مشاهدة مادة أو فتح رابط: 10",
+"כל שלב במשימה: 5": "كل خطوة في المهمة: 5",
+"הגשת תוצר: 20, ובזמן: עוד 15": "تقديم منتَج: 20، وفي الوقت: 15 إضافية",
+"מעבר בשעשועון: 20, וציון מלא: עוד 10": "اجتياز المسابقة: 20، وعلامة كاملة: 10 إضافية",
+"יומן החוקר/ת: 10, דירוג המפגש: 5": "دفتر الباحث/ة: 10، تقييم اللقاء: 5",
+"פתיחת תיבת האוצר: 30": "فتح صندوق الكنز: 30",
+"כל לב שקיבלת בקיר ההשראה: 2": "كل قلب حصلت عليه في جدار الإلهام: 2",
+"חדרים נפתחו": "غرف فُتحت",
+"חומרים נצפו": "مواد شوهدت",
+"תוצרים הוגשו": "منتجات قُدّمت",
+"שעשועונים עברת": "مسابقات اجتزتها",
+"מסך הסרטונים": "شاشة الفيديوهات",
+"קיר הרעיונות": "جدار الأفكار",
+"לוח המצגות": "لوح العروض",
+"מדף הקבצים": "رف الملفات",
+"לוח השאלונים": "لوح الاستبيانات",
+"מכונת המשחקים": "آلة الألعاب",
+"השער לעולם": "البوابة إلى العالم",
+"ארון החומרים": "خزانة المواد",
+"שולחן המעבדה": "طاولة المختبر",
+"כן השיגור": "منصة الإطلاق",
+"עמדת השעשועון": "محطة المسابقة",
+"בואו נצפה!": "هيا نشاهد!",
+"הקיר מחכה לרעיון שלך": "الجدار ينتظر فكرتك",
+"בואו נעבור על המצגת": "هيا نراجع العرض التقديمي",
+"יש כאן משהו לקרוא": "هنا شيء للقراءة",
+"יש שאלון שמחכה לך": "هناك استبيان ينتظرك",
+"מוכנים לשחק?": "مستعدون للعب؟",
+"בואו נצא לגלות": "هيا ننطلق لنكتشف",
+"עוד חומרים מחכים כאן": "مواد أخرى تنتظر هنا",
+"בואו נבנה את המשימה": "هيا نبني المهمة",
+"מוכנים לשעשועון?": "مستعدون للمسابقة؟",
+"אבגדהוזח": "أبجدهوزح",
+"כל הכבוד!": "أحسنت!",
+"יפה מאוד!": "جميل جدًا!",
+"איזה יופי, ממשיכים!": "رائع، نتابع!",
+"מעולה! עוד צעד קדימה": "ممتاز! خطوة أخرى إلى الأمام",
+"בדיוק ככה!": "تمامًا هكذا!",
+"סקרן/ית": "فضولي/ة",
+"חוקר/ת": "باحث/ة",
+"מוביל/ת חדשנות": "رائد/ة ابتكار",
+"מומחה/ית AI": "خبير/ة ذكاء اصطناعي",
+"אלוף/ת החקר": "بطل/ة البحث",
+"ERR_BAD_KEY": "لم يتم العثور على المهمة. حدّثوا الصفحة وحاولوا مرة أخرى.",
+"ERR_NO_SUB": "لم يتم العثور على تقديم.",
+"ERR_SELF_LIKE": "لا يمكن وضع قلب لمنتَجك."
 };
 
 /* =====================================================================
@@ -1251,7 +1713,7 @@ var JourneyCore = (function () {
             var opts = (qq.options || []).map(str).map(function (x) { return x.trim(); }).filter(Boolean);
             var corr = Math.floor(num(qq.correct, 0));
             if (corr < 0 || corr >= opts.length) corr = 0;
-            return { q: str(qq.q).trim(), options: opts, correct: corr };
+            return { q: str(qq.q).trim(), options: opts, correct: corr, explain: str(qq.explain).trim().slice(0, 600), hint: str(qq.hint).trim().slice(0, 300) };
           }).filter(function (qq) { return qq.q && qq.options.length >= 2; })
         }
       });
@@ -1291,6 +1753,42 @@ var JourneyCore = (function () {
     var m = {};
     rows.forEach(function (r) { if (r.email === email) m[r.stationId] = r; });
     return m;
+  }
+
+  /* ---------- משחק: משימות, נקודות ודרגות ---------- */
+  function h36(s) {
+    s = str(s);
+    var h1 = 0x811c9dc5, h2 = 0x1b873593;
+    for (var i = 0; i < s.length; i++) {
+      var c = s.charCodeAt(i);
+      h1 = Math.imul(h1 ^ c, 16777619);
+      h2 = Math.imul(h2 ^ c, 2246822507);
+    }
+    return ((h1 >>> 0).toString(36) + (h2 >>> 0).toString(36)).slice(0, 10);
+  }
+  var LEVELS = [[0, 'סקרן/ית'], [120, 'חוקר/ת'], [300, 'מוביל/ת חדשנות'], [600, 'מומחה/ית AI'], [1000, 'אלוף/ת החקר']];
+  var POINTS = { item: 10, req: 5, sub: 20, onTime: 15, quiz: 20, perfect: 10, reflect: 10, rate: 5, complete: 30, like: 2, likeCap: 20 };
+  function levelOf(p) {
+    var i = 0;
+    LEVELS.forEach(function (l, k) { if (p >= l[0]) i = k; });
+    var next = LEVELS[i + 1];
+    return { index: i, name: LEVELS[i][1], from: LEVELS[i][0], next: next ? next[0] : null, nextName: next ? next[1] : '' };
+  }
+  /** המשימות של תחנה, לפי מה שהמרצה הגדיר. כל משימה נותנת ספרה לקוד של התיבה. */
+  function missionsOf(gid, st) {
+    var list = [];
+    st.items.forEach(function (it) {
+      list.push({ key: 'it:' + h36(it.url || it.title), kind: 'item', type: it.type, title: it.title, url: it.url });
+    });
+    if (st.requirements.length) list.push({ key: 'lab', kind: 'lab', count: st.requirements.length });
+    if (st.hasTask) list.push({ key: 'sub', kind: 'sub' });
+    if (st.quiz.questions.length) list.push({ key: 'quiz', kind: 'quiz' });
+    list.forEach(function (m) { m.digit = parseInt(h36(gid + '|' + st.id + '|' + m.key).slice(-3), 36) % 10; });
+    return list;
+  }
+  function onTime(st, sub) {
+    if (!sub || !st.date) return !!sub;
+    return str(sub.time) <= addMinutes(st.date + ' 23:59', 7 * 1440);
   }
 
   /* ---------- סיכום מבנה המפגשים ---------- */
@@ -1519,11 +2017,94 @@ var JourneyCore = (function () {
       if (!st) fail('NO_STATION', 'התחנה לא נמצאה.');
       return st;
     }
+    /* ---------- משחק: הקשר מחושב לכל הקבוצה ---------- */
+    function ownerId(gid, email) { return env.sign('o|' + gid + '|' + email).slice(0, 12); }
+    function likeVoter(gid, email) { return env.sign('l|' + gid + '|' + email).slice(0, 16); }
+    function getP(name, gid) { return store[name] ? store[name](gid) : []; }
+    function gameCtx(g) {
+      var ctx = { g: g, t: now(), prog: {}, subs: {}, quiz: {}, refl: {}, players: {}, likes: getP('getLikes', g.id), ratings: store.getRatings(g.id) };
+      function by(rows, target, val) {
+        rows.forEach(function (r) { var e = normEmail(r.email); (target[e] = target[e] || {})[r.stationId] = val ? val(r) : r; });
+      }
+      by(getP('getProgress', g.id), ctx.prog, function (r) { var a = []; try { a = JSON.parse(str(r.done) || '[]'); } catch (e) { a = []; } return a; });
+      by(store.getSubs(g.id), ctx.subs);
+      by(store.getQuizResults(g.id), ctx.quiz);
+      by(getP('getReflections', g.id), ctx.refl);
+      getP('getPlayers', g.id).forEach(function (r) { ctx.players[normEmail(r.email)] = r; });
+      ctx.missions = {};
+      g.stations.forEach(function (s) { ctx.missions[s.id] = missionsOf(g.id, s); });
+      return ctx;
+    }
+    function stationGame(ctx, s, email) {
+      var g = ctx.g, done = (ctx.prog[email] || {})[s.id] || [];
+      var sub = (ctx.subs[email] || {})[s.id] || null, qr = (ctx.quiz[email] || {})[s.id] || null;
+      var refl = (ctx.refl[email] || {})[s.id] || null;
+      var quizOk = !!qr && num(qr.best, 0) >= s.quiz.passScore;
+      var reqDone = s.requirements.map(function (r, i) { return done.indexOf('rq:' + i) >= 0; });
+      var pts = 0;
+      var ms = ctx.missions[s.id].map(function (m) {
+        var ok = false;
+        if (m.kind === 'item') { ok = done.indexOf(m.key) >= 0; if (ok) pts += POINTS.item; }
+        else if (m.kind === 'lab') ok = reqDone.every(Boolean);
+        else if (m.kind === 'sub') ok = !!sub;
+        else if (m.kind === 'quiz') ok = quizOk;
+        return { key: m.key, kind: m.kind, type: m.type, title: m.title, url: m.url, count: m.count, digit: m.digit, done: ok };
+      });
+      reqDone.forEach(function (d) { if (d) pts += POINTS.req; });
+      if (sub) pts += POINTS.sub + (onTime(s, sub) ? POINTS.onTime : 0);
+      if (quizOk) pts += POINTS.quiz + (num(qr.best, 0) >= 100 ? POINTS.perfect : 0);
+      if (refl && str(refl.text).trim()) pts += POINTS.reflect;
+      var voter = voterId(g.id, s.id, email);
+      if (ctx.ratings.some(function (r) { return r.stationId === s.id && r.voter === voter; })) pts += POINTS.rate;
+      var complete = ms.length > 0 && ms.every(function (m) { return m.done; });
+      if (complete) pts += POINTS.complete;
+      var oid = ownerId(g.id, email);
+      var liked = ctx.likes.filter(function (l) { return l.stationId === s.id && l.owner === oid; }).length;
+      pts += Math.min(POINTS.likeCap, liked * POINTS.like);
+      return { missions: ms, reqDone: reqDone, points: pts, complete: complete, sub: sub, qr: qr, refl: refl, onTime: onTime(s, sub), likes: liked };
+    }
+    function pointsOf(ctx, email) {
+      var total = 0;
+      ctx.g.stations.forEach(function (s) { if (stationOpen(s, ctx.g.openTime, ctx.t)) total += stationGame(ctx, s, email).points; });
+      return total;
+    }
+    function displayName(ctx, r) {
+      var pl = ctx.players[normEmail(r.email)];
+      if (pl && str(pl.nick).trim()) return str(pl.nick).trim();
+      return str(r.name).trim().split(/\s+/)[0] || 'משתתף/ת';
+    }
+    function leaderboard(ctx, email) {
+      var rows = store.getRoster(ctx.g.id).map(function (r) {
+        var e = normEmail(r.email), pl = ctx.players[e];
+        var hide = pl && str(pl.board) === 'FALSE';
+        return { email: e, name: hide ? '' : displayName(ctx, r), hidden: hide, points: pointsOf(ctx, e) };
+      }).sort(function (a, b) { return b.points - a.points; });
+      var mine = 0;
+      rows.forEach(function (r, i) { if (r.email === email) mine = i + 1; });
+      return {
+        top: rows.slice(0, 5).map(function (r, i) { return { rank: i + 1, name: r.email === email ? (r.name || displayName(ctx, { email: email, name: '' })) : r.name, hidden: r.hidden && r.email !== email, points: r.points, me: r.email === email }; }),
+        myRank: mine, total: rows.length
+      };
+    }
+    function wallFor(ctx, s, email) {
+      var g = ctx.g, myVoter = likeVoter(g.id, email), out = [];
+      store.getRoster(g.id).forEach(function (r) {
+        var e = normEmail(r.email);
+        if (e === email) return;
+        var sub = (ctx.subs[e] || {})[s.id];
+        if (!sub || str(sub.share) !== 'TRUE') return;
+        var oid = ownerId(g.id, e);
+        var ls = ctx.likes.filter(function (l) { return l.stationId === s.id && l.owner === oid; });
+        out.push({ id: oid, name: displayName(ctx, r), link: sub.link, likes: ls.length, liked: ls.some(function (l) { return l.voter === myVoter; }), time: sub.time });
+      });
+      return out.sort(function (a, b) { return b.likes - a.likes || (a.time < b.time ? 1 : -1); }).slice(0, 12);
+    }
     function participantState(p) {
       var g = p.group, t = now();
-      var subs = indexBy(store.getSubs(g.id), p.email);
-      var qrs = indexBy(store.getQuizResults(g.id), p.email);
-      var ratings = store.getRatings(g.id);
+      var ctx = gameCtx(g);
+      var subs = ctx.subs[p.email] || {};
+      var qrs = ctx.quiz[p.email] || {};
+      var ratings = ctx.ratings;
       var stations = g.stations.map(function (s, i) {
         var open = stationOpen(s, g.openTime, t);
         var sub = subs[s.id] || null, qr = qrs[s.id] || null;
@@ -1532,23 +2113,33 @@ var JourneyCore = (function () {
           id: s.id, index: i + 1, title: s.title, date: s.date, start: s.start, end: s.end, type: s.type,
           hours: s.hours, location: s.location, mode: s.mode, open: open, hasTask: s.hasTask, requirePadlet: s.requirePadlet,
           badge: s.badge && req.any, badgeName: s.badgeName, earned: s.badge && req.all,
-          mySub: sub ? { link: sub.link, time: sub.time } : null,
+          mySub: sub ? { link: sub.link, time: sub.time, share: str(sub.share) === 'TRUE', feedback: str(sub.feedback), checked: str(sub.checked) === 'TRUE', fbTime: str(sub.fbTime) } : null,
           myQuiz: qr ? { best: num(qr.best, 0), attempts: num(qr.attempts, 0) } : null,
           quizCount: s.quiz.questions.length, passScore: s.quiz.passScore
         };
         if (open) {
+          var gm = stationGame(ctx, s, p.email);
           o.desc = s.desc; o.requirements = s.requirements; o.items = s.items; o.submitHint = s.submitHint;
-          o.quiz = s.quiz.questions.map(function (q) { return { q: q.q, options: q.options }; });
+          o.quiz = s.quiz.questions.map(function (q) { return { q: q.q, options: q.options, hint: q.hint }; });
           o.rating = ratingStats(ratings, s.id, voterId(g.id, s.id, p.email));
+          o.missions = gm.missions; o.reqDone = gm.reqDone; o.points = gm.points; o.complete = gm.complete; o.onTime = gm.onTime;
+          o.reflection = gm.refl ? str(gm.refl.text) : '';
+          o.likes = gm.likes;
+          o.wall = wallFor(ctx, s, p.email);
         }
         return o;
       });
       var fsub = subs['final'] || null;
+      var pl = ctx.players[p.email] || null, avatar = null;
+      if (pl) { try { avatar = JSON.parse(str(pl.avatar) || 'null'); } catch (e) { avatar = null; } }
+      var myPoints = pointsOf(ctx, p.email);
       return {
         now: t,
-        me: { email: p.email, name: p.name },
+        me: { email: p.email, name: p.name, nick: pl ? str(pl.nick) : '', avatar: avatar, board: !pl || str(pl.board) !== 'FALSE', points: myPoints, level: levelOf(myPoints) },
         group: { id: g.id, name: g.name, theme: g.theme, bgUrl: g.bgUrl, lecturer: g.lecturer, openTime: g.openTime, course: g.course, final: g.final },
         stations: stations,
+        board: leaderboard(ctx, p.email),
+        levels: LEVELS,
         finalSub: fsub ? { link: fsub.link, time: fsub.time } : null
       };
     }
@@ -1563,6 +2154,8 @@ var JourneyCore = (function () {
         open: g.stations.map(function (s) { return stationOpen(s, g.openTime, t); }),
         roster: store.getRoster(g.id).map(function (r) { return { email: normEmail(r.email), name: str(r.name), hasPin: !!str(r.pin) }; }),
         subs: store.getSubs(g.id), quiz: store.getQuizResults(g.id),
+        points: (function () { var ctx = gameCtx(g), m = {}; store.getRoster(g.id).forEach(function (r) { var e = normEmail(r.email); m[e] = pointsOf(ctx, e); }); return m; })(),
+        reflections: getP('getReflections', g.id),
         ratings: g.stations.map(function (s) { return ratingStats(ratings, s.id, null); })
       };
     }
@@ -1619,8 +2212,88 @@ var JourneyCore = (function () {
           if (!st.hasTask) fail('NO_TASK', 'אין מטלת הגשה בתחנה זו.');
           if (st.requirePadlet && !/^https?:\/\/([a-z0-9-]+\.)*padlet\.(com|org)\//i.test(link)) fail('NEED_PADLET', 'בתחנה זו יש להגיש קישור ל-Padlet (כתובת שמכילה padlet.com).');
         }
-        store.putSub(g.id, { email: p.email, stationId: str(req.stationId), link: link, time: now() });
+        var prevSub = indexBy(store.getSubs(g.id), p.email)[str(req.stationId)] || null;
+        var row = { email: p.email, stationId: str(req.stationId), link: link, time: now(),
+          share: req.share === undefined ? (prevSub ? str(prevSub.share) : 'FALSE') : (req.share ? 'TRUE' : 'FALSE'),
+          feedback: prevSub ? str(prevSub.feedback) : '', fbTime: prevSub ? str(prevSub.fbTime) : '',
+          checked: prevSub && str(prevSub.link) === link ? str(prevSub.checked) : 'FALSE' };
+        store.putSub(g.id, row);
         return participantState(p);
+      },
+      shareSub: function (req) {
+        var p = requireParticipant(req), g = p.group;
+        var sub = indexBy(store.getSubs(g.id), p.email)[str(req.stationId)];
+        if (!sub) fail('NO_SUB', 'עדיין לא הגשת תוצר בתחנה הזו.');
+        sub.share = req.share ? 'TRUE' : 'FALSE';
+        store.putSub(g.id, sub);
+        return participantState(p);
+      },
+      /* ===== משחק ===== */
+      profile: function (req) {
+        var p = requireParticipant(req), g = p.group;
+        var nick = str(req.nick).replace(/[<>]/g, '').trim().slice(0, 20);
+        var a = req.avatar || {}, av = {
+          style: ['bun', 'hijab', 'short', 'curly', 'kippah', 'long'].indexOf(a.style) >= 0 ? a.style : 'bun',
+          skin: /^#[0-9a-f]{6}$/i.test(a.skin) ? a.skin : '#F2C6A0',
+          shirt: /^#[0-9a-f]{6}$/i.test(a.shirt) ? a.shirt : '#3FE0D0'
+        };
+        if (!store.putPlayer) fail('SERVER', 'שגיאה זמנית בשרת. נסו שוב בעוד רגע.');
+        store.putPlayer(g.id, { email: p.email, nick: nick, avatar: JSON.stringify(av), board: req.board === false ? 'FALSE' : 'TRUE', time: now() });
+        return participantState(p);
+      },
+      progress: function (req) {
+        var p = requireParticipant(req), g = p.group;
+        var st = findStation(g, req.stationId);
+        if (!stationOpen(st, g.openTime, now())) fail('LOCKED', 'התחנה עדיין נעולה.');
+        var key = str(req.key);
+        var valid = missionsOf(g.id, st).some(function (m) { return m.kind === 'item' && m.key === key; }) ||
+          (/^rq:\d+$/.test(key) && Number(key.slice(3)) < st.requirements.length);
+        if (!valid) fail('BAD_KEY', 'המשימה לא נמצאה. רעננו את הדף ונסו שוב.');
+        var row = (store.getProgress(g.id) || []).filter(function (r) { return normEmail(r.email) === p.email && r.stationId === st.id; })[0];
+        var done = [];
+        if (row) { try { done = JSON.parse(str(row.done) || '[]'); } catch (e) { done = []; } }
+        done = done.filter(function (k) { return k !== key; });
+        if (req.done !== false) done.push(key);
+        store.putProgress(g.id, { email: p.email, stationId: st.id, done: JSON.stringify(done), time: now() });
+        return participantState(p);
+      },
+      quizCheck: function (req) {
+        var p = requireParticipant(req), g = p.group;
+        var st = findStation(g, req.stationId);
+        if (!stationOpen(st, g.openTime, now())) fail('LOCKED', 'התחנה עדיין נעולה.');
+        var q = st.quiz.questions[Math.floor(num(req.index, -1))];
+        if (!q) fail('NO_QUIZ', 'השאלה לא נמצאה.');
+        return { right: Number(req.answer) === q.correct, correct: q.correct, explain: q.explain };
+      },
+      quizFifty: function (req) {
+        var p = requireParticipant(req), g = p.group;
+        var st = findStation(g, req.stationId);
+        if (!stationOpen(st, g.openTime, now())) fail('LOCKED', 'התחנה עדיין נעולה.');
+        var q = st.quiz.questions[Math.floor(num(req.index, -1))];
+        if (!q) fail('NO_QUIZ', 'השאלה לא נמצאה.');
+        var wrong = q.options.map(function (o, i) { return i; }).filter(function (i) { return i !== q.correct; });
+        var keep = wrong[Math.floor(Math.random() * wrong.length)];
+        return { remove: wrong.filter(function (i) { return i !== keep; }) };
+      },
+      reflect: function (req) {
+        var p = requireParticipant(req), g = p.group;
+        var st = findStation(g, req.stationId);
+        if (!stationOpen(st, g.openTime, now())) fail('LOCKED', 'התחנה עדיין נעולה.');
+        store.putReflection(g.id, { email: p.email, stationId: st.id, text: str(req.text).trim().slice(0, 1500), time: now() });
+        return participantState(p);
+      },
+      like: function (req) {
+        var p = requireParticipant(req), g = p.group;
+        var st = findStation(g, req.stationId);
+        var oid = str(req.id);
+        var owner = store.getRoster(g.id).filter(function (r) { return ownerId(g.id, normEmail(r.email)) === oid; })[0];
+        if (!owner) fail('NO_SUB', 'התוצר לא נמצא.');
+        if (normEmail(owner.email) === p.email) fail('SELF_LIKE', 'אי אפשר לסמן לב לתוצר שלך.');
+        var voter = likeVoter(g.id, p.email);
+        if (req.on === false) store.deleteLike(g.id, st.id, oid, voter);
+        else store.putLike(g.id, { stationId: st.id, owner: oid, voter: voter, time: now() });
+        var ctx = gameCtx(g);
+        return { wall: wallFor(ctx, st, p.email) };
       },
       quizSubmit: function (req) {
         var p = requireParticipant(req), g = p.group;
@@ -1813,6 +2486,17 @@ var JourneyCore = (function () {
         store.saveRoster(g.id, roster);
         return adminGroupPayload(g);
       },
+      adminFeedback: function (req) {
+        var L = requireLecturer(req);
+        var g = requireOwnGroup(req, L), email = normEmail(req.email);
+        var sub = indexBy(store.getSubs(g.id), email)[str(req.stationId)];
+        if (!sub) fail('NO_SUB', 'לא נמצאה הגשה.');
+        sub.feedback = str(req.text).trim().slice(0, 1000);
+        sub.checked = req.checked === false ? 'FALSE' : 'TRUE';
+        sub.fbTime = now();
+        store.putSub(g.id, sub);
+        return adminGroupPayload(g);
+      },
       adminSaveTemplate: function (req) {
         var L = requireLecturer(req);
         var g = requireOwnGroup(req, L);
@@ -1881,6 +2565,18 @@ var JourneyCore = (function () {
         store.saveLecturer(L);
         return actions.superList(req);
       },
+      superGroups: function (req) {
+        requireSuper(req);
+        var lid = str(req.lecturerId);
+        return { groups: store.listGroups().filter(function (g) { return ownerOf(g) === lid; }).map(function (g) { return { id: g.id, name: g.name, count: groupStats(g.id).roster }; }) };
+      },
+      /** תוכן קבוצה בלבד, בלי משתתפים, לתצוגה מקדימה של מנהלת האתר */
+      superGroupContent: function (req) {
+        requireSuper(req);
+        var raw = store.getGroup(str(req.groupId));
+        if (!raw) fail('NO_GROUP', 'הקבוצה לא נמצאה.');
+        return { group: normalizeGroup(raw, rand) };
+      },
       superSettings: function (req) {
         requireSuper(req);
         var s = req.settings || {};
@@ -1910,7 +2606,7 @@ var JourneyCore = (function () {
     summarize: summarize, buildImportDraft: buildImportDraft, typeFromText: typeFromText, safeUrl: safeUrl,
     builtinTemplate: builtinTemplate, emptyTemplate: emptyTemplate, lecturerStatus: lecturerStatus, addMonths: addMonths,
     normalizeGroup: normalizeGroup, normDate: normDate, normTime: normTime, normEmail: normEmail,
-    isEmail: isEmail, isUrl: isUrl, stationOpen: stationOpen, createApi: createApi, clone: clone
+    isEmail: isEmail, isUrl: isUrl, stationOpen: stationOpen, createApi: createApi, clone: clone, LEVELS: LEVELS, POINTS: POINTS, levelOf: levelOf, missionsOf: missionsOf, h36: h36
   };
 })();
 
@@ -1918,6 +2614,7 @@ var JourneyCore = (function () {
 function MemStore(data, persist) {
   data.lecturers = data.lecturers || [];
   data.codes = data.codes || [];
+  ['players', 'progress', 'reflections', 'likes'].forEach(function (b) { data[b] = data[b] || {}; });
   function list(bucket, gid) { return (data[bucket][gid] = data[bucket][gid] || []); }
   function upsert(arr, row, keys) {
     var i = arr.findIndex(function (r) { return keys.every(function (k) { return r[k] === row[k]; }); });
@@ -1931,13 +2628,22 @@ function MemStore(data, persist) {
     saveGroup: function (g) { data.groups[g.id] = copy(g); persist(); },
     deleteGroup: function (id) {
       delete data.groups[id];
-      ['roster', 'subs', 'quiz', 'ratings'].forEach(function (b) { delete data[b][id]; });
+      ['roster', 'subs', 'quiz', 'ratings', 'players', 'progress', 'reflections', 'likes'].forEach(function (b) { delete data[b][id]; });
       persist();
     },
     getRoster: function (gid) { return copy(list('roster', gid)); },
     saveRoster: function (gid, rows) { data.roster[gid] = copy(rows); persist(); },
     getSubs: function (gid) { return copy(list('subs', gid)); },
-    putSub: function (gid, row) { upsert(list('subs', gid), row, ['email', 'stationId']); },
+    putSub: function (gid, row) { upsert(list('subs', gid), copy(row), ['email', 'stationId']); },
+    getPlayers: function (gid) { return copy(list('players', gid)); },
+    putPlayer: function (gid, row) { upsert(list('players', gid), copy(row), ['email']); },
+    getProgress: function (gid) { return copy(list('progress', gid)); },
+    putProgress: function (gid, row) { upsert(list('progress', gid), copy(row), ['email', 'stationId']); },
+    getReflections: function (gid) { return copy(list('reflections', gid)); },
+    putReflection: function (gid, row) { upsert(list('reflections', gid), copy(row), ['email', 'stationId']); },
+    getLikes: function (gid) { return copy(list('likes', gid)); },
+    putLike: function (gid, row) { upsert(list('likes', gid), copy(row), ['stationId', 'owner', 'voter']); },
+    deleteLike: function (gid, sid, owner, voter) { data.likes[gid] = list('likes', gid).filter(function (l) { return !(l.stationId === sid && l.owner === owner && l.voter === voter); }); persist(); },
     getQuizResults: function (gid) { return copy(list('quiz', gid)); },
     putQuizResult: function (gid, row) { upsert(list('quiz', gid), row, ['email', 'stationId']); },
     getRatings: function (gid) { return copy(list('ratings', gid)); },
@@ -2101,6 +2807,15 @@ ICON.globe = svg('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 
 ICON.user = svg('<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>');
 ICON.shield = svg('<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>');
 ICON.upload = svg('<path d="M12 16V4M7 9l5-5 5 5M5 20h14"/>');
+ICON.music = svg('<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>');
+ICON.speaker = svg('<path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>');
+ICON.voice = svg('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/>');
+ICON.cal = svg('<rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/>');
+ICON.trophy = svg('<path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 21h8M9 17h6"/>');
+ICON.heart = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.8 3.6 4.5 7 4.5c2 0 3.6 1.1 5 2.9 1.4-1.8 3-2.9 5-2.9 3.4 0 5.6 3.3 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg>';
+ICON.back = svg('<path d="M5 12h14M13 6l6 6-6 6"/>');
+ICON.journal = svg('<path d="M6 3h11a2 2 0 0 1 2 2v16H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M8 3v18M11 8h5M11 12h5"/>');
+ICON.chat = svg('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>');
 ICON.key = svg('<circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3"/>');
 
 /* לוגו: סמל + כיתוב. אותו עיצוב כמו קובץ logo.svg שמצורף */
@@ -2151,8 +2866,14 @@ function initDemo() {
     importSyllabus: demoImport
   });
 }
+var PREVIEW_API = null;
 function api(action, payload) {
   var req = Object.assign({ action: action }, payload || {});
+  if (PREVIEW_API) {
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () { var r = PREVIEW_API(JSON.parse(JSON.stringify(req))); if (r.ok) resolve(r.data); else reject(r); }, 120);
+    });
+  }
   if (DEMO) {
     return new Promise(function (resolve, reject) {
       setTimeout(function () {
@@ -2366,6 +3087,106 @@ if (window.JOURNEY_PWA && 'serviceWorker' in navigator && location.protocol === 
 }
 
 /* =====================================================================
+   Course-Manager – צלילים, מוזיקת רקע וקול מעודד (נוצרים בדפדפן, בלי קבצים)
+   ===================================================================== */
+var SND = (function () {
+  var pref = lsGet('sound') || {};
+  var on = { sfx: pref.sfx !== false, voice: pref.voice !== false, music: false };
+  var ctx = null, musicTimer = 0, musicStep = 0, voiceObj = null;
+  function save() { lsSet('sound', { sfx: on.sfx, voice: on.voice }); }
+  function ac() {
+    if (!ctx) { try { ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { ctx = null; } }
+    if (ctx && ctx.state === 'suspended') { try { ctx.resume(); } catch (e) { /* ignore */ } }
+    return ctx;
+  }
+  function tone(f, t0, d, type, v) {
+    var c = ac(); if (!c) return;
+    var o = c.createOscillator(), g = c.createGain(), t = c.currentTime + t0;
+    o.type = type || 'sine'; o.frequency.value = f;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(v || .16, t + .02); g.gain.exponentialRampToValueAtTime(.0001, t + d);
+    o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + d + .05);
+  }
+  function noise(d, f0, f1, v) {
+    var c = ac(); if (!c) return;
+    var n = Math.floor(c.sampleRate * d), b = c.createBuffer(1, n, c.sampleRate), x = b.getChannelData(0);
+    for (var i = 0; i < n; i++) x[i] = (Math.random() * 2 - 1) * (1 - i / n);
+    var s = c.createBufferSource(), fl = c.createBiquadFilter(), g = c.createGain();
+    s.buffer = b; fl.type = 'bandpass'; fl.frequency.setValueAtTime(f0, c.currentTime); fl.frequency.exponentialRampToValueAtTime(f1, c.currentTime + d);
+    g.gain.value = v || .25; s.connect(fl); fl.connect(g); g.connect(c.destination); s.start();
+  }
+  var FX = {
+    tap: function () { tone(660, 0, .08, 'triangle', .1); },
+    step: function () { tone(220, 0, .06, 'square', .03); },
+    coin: function () { tone(988, 0, .1, 'square', .07); tone(1319, .08, .3, 'square', .07); },
+    digit: function () { [523, 784, 1047].forEach(function (f, i) { tone(f, i * .06, .25, 'triangle', .12); }); },
+    correct: function () { [784, 988, 1175, 1568].forEach(function (f, i) { tone(f, i * .07, .3, 'triangle', .14); }); noise(.6, 2000, 6000, .08); },
+    soft: function () { tone(392, 0, .25, 'sine', .14); tone(330, .12, .3, 'sine', .12); },
+    tick: function () { tone(1400, 0, .04, 'square', .03); },
+    drum: function () { for (var i = 0; i < 10; i++) tone(110 + (i % 2) * 8, i * .07, .06, 'triangle', .09); },
+    whoosh: function () { noise(.9, 300, 3000, .28); },
+    unlock: function () { tone(300, 0, .1, 'square', .08); tone(450, .12, .1, 'square', .08); tone(600, .24, .1, 'square', .08); noise(.3, 1500, 800, .2); },
+    fanfare: function () { [523, 659, 784, 1047, 784, 1047].forEach(function (f, i) { tone(f, i * .12, i === 5 ? .9 : .22, 'square', .07); tone(f / 2, i * .12, .25, 'triangle', .08); }); },
+    heart: function () { tone(1175, 0, .15, 'sine', .12); }
+  };
+  var PAD = [[262, 330, 392], [220, 277, 330], [175, 220, 262], [196, 247, 294]];
+  function musicTick() {
+    if (!on.music) return;
+    var ch = PAD[musicStep++ % PAD.length];
+    ch.forEach(function (f) { tone(f, 0, 2.4, 'sine', .035); });
+    [0, .6, 1.2, 1.8].forEach(function (tt, i) { tone(ch[i % 3] * 2, tt, .4, 'triangle', .022); });
+  }
+  function pickVoice() {
+    if (!('speechSynthesis' in window)) return;
+    var re = LANG === 'ar' ? /^ar/i : /^(he|iw)/i;
+    voiceObj = speechSynthesis.getVoices().filter(function (v) { return re.test(v.lang); })[0] || null;
+  }
+  if ('speechSynthesis' in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+  onLangChange.push(pickVoice);
+  return {
+    on: on,
+    play: function (n) { if (on.sfx && FX[n]) { try { FX[n](); } catch (e) { /* ignore */ } } },
+    say: function (text) {
+      if (!on.voice || !text || !('speechSynthesis' in window)) return;
+      try {
+        speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = LANG === 'ar' ? 'ar-SA' : 'he-IL';
+        if (voiceObj) u.voice = voiceObj;
+        u.rate = 1.02; u.pitch = 1.1;
+        speechSynthesis.speak(u);
+      } catch (e) { /* ignore */ }
+    },
+    unlock: function () { ac(); },
+    toggle: function (k) {
+      on[k] = !on[k];
+      if (k === 'music') { clearInterval(musicTimer); if (on.music) { ac(); musicTick(); musicTimer = setInterval(musicTick, 2400); } }
+      else save();
+      if (k === 'sfx' && on.sfx) FX.coin();
+      if (k === 'voice' && !on.voice && 'speechSynthesis' in window) speechSynthesis.cancel();
+      return on[k];
+    },
+    stopMusic: function () { on.music = false; clearInterval(musicTimer); }
+  };
+})();
+var CHEERS = ['כל הכבוד!', 'יפה מאוד!', 'איזה יופי, ממשיכים!', 'מעולה! עוד צעד קדימה', 'בדיוק ככה!'];
+var cheerIx = 0;
+function cheer() { var c = t(CHEERS[cheerIx++ % CHEERS.length]); SND.say(c); return c; }
+function soundButtons() {
+  return '<button type="button" class="ib" data-snd="music" aria-pressed="' + SND.on.music + '" aria-label="' + esc(t('מוזיקת רקע')) + '" title="' + esc(t('מוזיקת רקע')) + '">' + ICON.music + '</button>' +
+    '<button type="button" class="ib" data-snd="sfx" aria-pressed="' + SND.on.sfx + '" aria-label="' + esc(t('צלילים')) + '" title="' + esc(t('צלילים')) + '">' + ICON.speaker + '</button>' +
+    '<button type="button" class="ib" data-snd="voice" aria-pressed="' + SND.on.voice + '" aria-label="' + esc(t('קול מעודד')) + '" title="' + esc(t('קול מעודד')) + '">' + ICON.voice + '</button>';
+}
+function bindSoundButtons(root) {
+  $all('[data-snd]', root).forEach(function (b) {
+    b.onclick = function () {
+      var k = b.getAttribute('data-snd'), v = SND.toggle(k);
+      $all('[data-snd="' + k + '"]').forEach(function (x) { x.setAttribute('aria-pressed', v); });
+      if (k === 'voice' && v) SND.say(t('הקול המעודד פועל'));
+    };
+  });
+}
+
+/* =====================================================================
    Course-Manager – מסך המשתלמים: מפה, תחנות, שאלון, דירוג, דרכון
    ===================================================================== */
 var S = { session: null, state: null, poll: 0 };
@@ -2375,6 +3196,7 @@ function handleAuthError(e) {
   return false;
 }
 function logout(msg) {
+  if (S.preview) { exitPreview(); return; }
   lsDel('session'); S.session = null; S.state = null;
   clearInterval(S.poll);
   modalStack.slice().forEach(function (m) { m.close(); });
@@ -2455,6 +3277,7 @@ function renderApp() {
   } else bg.style.background = '';
   $('#btnSyllabus').innerHTML = ICON.book + t('סילבוס ההשתלמות');
   renderMap();
+  renderHome();
   $('#appFoot').innerHTML = footerHtml();
   bindFooter($('#appFoot'));
 }
@@ -2541,6 +3364,7 @@ function findStation(id) { return S.state.stations.filter(function (s) { return 
 function openStation(id) {
   var s = findStation(id);
   if (!s) return;
+  if (s.open) { modalStack.slice().forEach(function (m) { if (m !== G.room) m.close(); }); openRoom(id); return; }
   var m = modal({
     title: t('תחנה {n}', { n: s.index }) + ': ' + s.title,
     eyebrow: esc(fmtDate(s.date, true)) + (s.start ? ' · <span class="num">' + esc(s.start) + (s.end ? '–' + esc(s.end) : '') + '</span>' : '') +
@@ -2799,6 +3623,746 @@ function openFinal() {
       S.state = st; renderApp(); m.close(); confetti(); toast(t('כל הכבוד! ההגשה נרשמה.'));
     }).catch(function (err) { if (!handleAuthError(err)) { er.hidden = false; er.textContent = errMsg(err); } });
   });
+}
+
+/* =====================================================================
+   Course-Manager – חוויית המשחק: דמות, מסך הבית, חדר הבריחה בכל תחנה,
+   שעשועון, תיבת האוצר, לוח מובילים, יומן למידה וסיכום המסע
+   ===================================================================== */
+var G = { room: null, sid: null, avX: 420, busy: false };
+var REDUCE = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+/* ---------- דמות ---------- */
+var AV_SKINS = ['#F2C6A0', '#D9A07A', '#A86E4B', '#7A4B32'];
+var AV_STYLES = ['bun', 'long', 'short', 'curly', 'hijab', 'kippah'];
+var AV_NAMES = { bun: 'קוקו', long: 'שיער ארוך', short: 'שיער קצר', curly: 'מתולתל', hijab: 'חיג׳אב', kippah: 'כיפה' };
+var AV_SHIRTS = ['#3FE0D0', '#FF5C9A', '#8C6BFF', '#FFC94D', '#45E08F', '#4D8DFF'];
+function defaultAvatar() { return { style: 'bun', skin: AV_SKINS[0], shirt: AV_SHIRTS[0] }; }
+function avatarSvg(a, x, y, s) {
+  a = a || defaultAvatar();
+  var hair = '#3A2A22', h = '';
+  if (a.style === 'bun') h = '<circle cx="0" cy="-84" r="27" fill="' + hair + '"/><circle cx="0" cy="-114" r="11" fill="' + hair + '"/>';
+  if (a.style === 'long') h = '<path d="M-28 -80a28 30 0 0 1 56 0v40h-12v-34h-32v34h-12z" fill="' + hair + '"/>';
+  if (a.style === 'short' || a.style === 'kippah') h = '<path d="M-27 -82q10-24 40-16 14 6 14 16-20-10-54 0z" fill="' + hair + '"/><path d="M-26 -80a26 26 0 0 1 52 0v-6a26 22 0 0 0-52 0z" fill="' + hair + '"/>';
+  if (a.style === 'curly') h = '<g fill="' + hair + '"><circle cx="-20" cy="-92" r="12"/><circle cx="0" cy="-100" r="13"/><circle cx="20" cy="-92" r="12"/><circle cx="-26" cy="-76" r="10"/><circle cx="26" cy="-76" r="10"/></g>';
+  var hijBack = a.style === 'hijab' ? '<path d="M-31 -78a31 33 0 0 1 62 0v26q-31 16-62 0z" fill="#5B4BD1"/>' : '';
+  var hijFront = a.style === 'hijab' ? '<path d="M-31 -78a31 33 0 0 1 62 0l-6 2a25 27 0 0 0-50 0z" fill="#5B4BD1"/>' : '';
+  var kip = a.style === 'kippah' ? '<path d="M-14 -100a16 9 0 0 1 28 0z" fill="#4D8DFF"/>' : '';
+  return '<g transform="translate(' + x + ' ' + y + ') scale(' + s + ')">' +
+    '<g class="legs"><rect x="-16" y="-10" width="12" height="40" rx="6" fill="#1D2460"/><rect x="4" y="-10" width="12" height="40" rx="6" fill="#1D2460"/></g>' +
+    hijBack + '<path d="M-26 -2q-4-42 26-46 30 4 26 46z" fill="' + a.shirt + '"/>' +
+    '<rect x="-6" y="-56" width="12" height="10" fill="' + a.skin + '"/>' + (a.style === 'hijab' ? '' : h) +
+    '<circle cx="0" cy="-78" r="24" fill="' + a.skin + '"/>' + hijFront + kip +
+    '<circle cx="-8" cy="-80" r="3" fill="#1A1A2E"/><circle cx="8" cy="-80" r="3" fill="#1A1A2E"/><path d="M-8 -68q8 7 16 0" stroke="#1A1A2E" stroke-width="3" fill="none" stroke-linecap="round"/>' +
+    '<circle cx="-14" cy="-71" r="4" fill="#FF8FB8" opacity=".5"/><circle cx="14" cy="-71" r="4" fill="#FF8FB8" opacity=".5"/></g>';
+}
+function faceSvg(a) { return '<svg viewBox="-40 -125 80 80" aria-hidden="true">' + avatarSvg(a, 0, 0, 1) + '</svg>'; }
+function myName() { var me = S.state.me; return me.nick || String(me.name || '').split(/\s+/)[0] || ''; }
+
+/* ---------- חלונית משחק ---------- */
+function gpanel(html, opts) {
+  opts = opts || {};
+  var ov = document.createElement('div');
+  ov.className = 'gpan-ov'; ov.setAttribute('dir', 'rtl');
+  ov.innerHTML = '<div class="gpan' + (opts.wide ? ' wide' : '') + '" role="dialog" aria-modal="true">' + html + '</div>';
+  document.body.appendChild(ov);
+  var prev = document.activeElement;
+  var m = { el: ov, box: $('.gpan', ov) };
+  m.close = function () {
+    if (!ov.parentNode) return;
+    clearInterval(m.timer);
+    ov.parentNode.removeChild(ov);
+    modalStack = modalStack.filter(function (x) { return x !== m; });
+    if (opts.onClose) opts.onClose();
+    if (prev && prev.focus) try { prev.focus(); } catch (e) { /* ignore */ }
+  };
+  ov.addEventListener('mousedown', function (e) { if (e.target === ov && !opts.sticky) m.close(); });
+  modalStack.push(m);
+  var h = $('h2', ov); if (h) { h.setAttribute('tabindex', '-1'); setTimeout(function () { h.focus(); }, 30); }
+  $all('[data-close]', ov).forEach(function (b) { b.onclick = m.close; });
+  return m;
+}
+function floatPts(n, el) {
+  if (!el || !n) return;
+  var r = el.getBoundingClientRect(), f = document.createElement('div');
+  f.className = 'float-pts'; f.textContent = '+' + n;
+  f.style.left = (r.left + r.width / 2 - 20) + 'px'; f.style.top = (r.top - 6) + 'px';
+  document.body.appendChild(f); setTimeout(function () { f.remove(); }, 1200);
+}
+function levelUpCheck(before) {
+  var lv = S.state.me.level;
+  if (before === undefined || lv.index <= before) return;
+  setTimeout(function () {
+    var m = gpanel('<div class="lvlup">' + ICON.trophy + '<h2>' + t('עלית דרגה!') + '</h2><p>' + esc(t('מעכשיו את/ה {l}.', { l: t(lv.name) })) + '</p><button type="button" class="gbtn go" data-close>' + t('ממשיכים!') + '</button></div>');
+    SND.play('fanfare'); confetti(); SND.say(t('עלית דרגה! מעכשיו את/ה {l}', { l: t(lv.name) }));
+    $('[data-close]', m.el).focus();
+  }, 700);
+}
+/** מעדכן את המצב מהשרת ומרענן את החדר אם הוא פתוח */
+function gameApply(st) {
+  var before = S.state ? S.state.me.level.index : undefined;
+  applyState(st);
+  if (G.room) refreshRoom();
+  levelUpCheck(before);
+}
+
+/* ---------- בחירת דמות ---------- */
+function openAvatarPicker(after) {
+  var me = S.state.me, a = JourneyCore.clone(me.avatar || defaultAvatar()), board = me.board !== false;
+  var m = gpanel('<div class="kick">' + t('הדמות שלי') + '</div><h2>' + t('מי יוצא/ת למשימה?') + '</h2><p class="gmuted">' + t('בחרו דמות. היא תלווה אתכם בכל החדרים במסע.') + '</p>' +
+    '<div class="avs" role="radiogroup" aria-label="' + esc(t('סגנון הדמות')) + '">' + AV_STYLES.map(function (s) { return '<button type="button" class="av" role="radio" data-st="' + s + '" aria-label="' + esc(t(AV_NAMES[s])) + '"></button>'; }).join('') + '</div>' +
+    '<span class="glabel">' + t('גוון עור') + '</span><div class="swatches" role="radiogroup" aria-label="' + esc(t('גוון עור')) + '">' + AV_SKINS.map(function (c, i) { return '<button type="button" class="sw" role="radio" data-sk="' + c + '" style="background:' + c + '" aria-label="' + esc(t('גוון {n}', { n: i + 1 })) + '"></button>'; }).join('') + '</div>' +
+    '<span class="glabel">' + t('צבע החולצה') + '</span><div class="swatches" role="radiogroup" aria-label="' + esc(t('צבע החולצה')) + '">' + AV_SHIRTS.map(function (c, i) { return '<button type="button" class="sw" role="radio" data-sh="' + c + '" style="background:' + c + '" aria-label="' + esc(t('צבע {n}', { n: i + 1 })) + '"></button>'; }).join('') + '</div>' +
+    '<label class="glabel" for="gNick">' + t('כינוי במשחק (רשות)') + '</label><input class="ginput" id="gNick" maxlength="20" value="' + esc(me.nick || '') + '" placeholder="' + esc(String(me.name || '').split(/\s+/)[0]) + '">' +
+    '<label class="gcheck"><input type="checkbox" id="gBoard"' + (board ? ' checked' : '') + '><span>' + t('להופיע בלוח המובילים של הקבוצה') + '</span></label>' +
+    '<p class="err" id="gAvErr" role="alert" hidden></p>' +
+    '<div class="grow end"><button type="button" class="gbtn ghost" data-close>' + t('ביטול') + '</button><button type="button" class="gbtn go" id="gAvGo">' + t('שמירה ויציאה למשימה') + '</button></div>', { sticky: true });
+  function paint() {
+    $all('[data-st]', m.el).forEach(function (b) {
+      b.innerHTML = '<svg viewBox="-40 -125 80 160" aria-hidden="true">' + avatarSvg({ style: b.getAttribute('data-st'), skin: a.skin, shirt: a.shirt }, 0, 0, 1) + '</svg>';
+      b.setAttribute('aria-checked', b.getAttribute('data-st') === a.style);
+    });
+    $all('[data-sk]', m.el).forEach(function (b) { b.setAttribute('aria-checked', b.getAttribute('data-sk') === a.skin); });
+    $all('[data-sh]', m.el).forEach(function (b) { b.setAttribute('aria-checked', b.getAttribute('data-sh') === a.shirt); });
+  }
+  $all('[data-st]', m.el).forEach(function (b) { b.onclick = function () { a.style = b.getAttribute('data-st'); paint(); SND.play('tap'); }; });
+  $all('[data-sk]', m.el).forEach(function (b) { b.onclick = function () { a.skin = b.getAttribute('data-sk'); paint(); SND.play('tap'); }; });
+  $all('[data-sh]', m.el).forEach(function (b) { b.onclick = function () { a.shirt = b.getAttribute('data-sh'); paint(); SND.play('tap'); }; });
+  paint();
+  $('#gAvGo', m.el).onclick = function () {
+    var btn = this; btn.disabled = true; SND.unlock();
+    api('profile', Object.assign(authPayload(), { nick: $('#gNick', m.el).value, avatar: a, board: $('#gBoard', m.el).checked })).then(function (st) {
+      m.close(); gameApply(st); SND.play('fanfare');
+      if (after) after();
+    }).catch(function (e) {
+      if (handleAuthError(e)) return;
+      btn.disabled = false; var er = $('#gAvErr', m.el); er.hidden = false; er.textContent = errMsg(e);
+    });
+  };
+}
+
+/* ---------- מסך הבית ---------- */
+function stampToMs(s) {
+  var m = String(s || '').match(/^(\d{4})-(\d{2})-(\d{2})(?: (\d{2}):(\d{2}))?/);
+  return m ? Date.UTC(+m[1], +m[2] - 1, +m[3], +(m[4] || 0), +(m[5] || 0)) : NaN;
+}
+function nextMeeting() {
+  var st = S.state, nowMs = stampToMs(st.now);
+  return st.stations.filter(function (s) { return s.date && stampToMs(s.date + ' ' + (s.end || s.start || '23:59')) >= nowMs; })[0] || null;
+}
+function countdownText(s) {
+  var diff = stampToMs(s.date + ' ' + (s.start || '08:00')) - stampToMs(S.state.now);
+  if (diff <= 0) return t('היום!');
+  var d = Math.floor(diff / 864e5), h = Math.floor((diff % 864e5) / 36e5);
+  if (d === 0) return h <= 1 ? t('בעוד פחות משעתיים') : t('בעוד {h} שעות', { h: h });
+  if (d === 1) return t('מחר');
+  return t('בעוד {d} ימים', { d: d });
+}
+function calDates(s) {
+  var d = s.date.replace(/-/g, ''), st = (s.start || '08:00').replace(':', ''), en = (s.end || s.start || '09:00').replace(':', '');
+  if (en <= st) en = String(Math.min(2359, +st + 100)).padStart(4, '0');
+  return { start: d + 'T' + st + '00', end: d + 'T' + en + '00' };
+}
+function calGoogle(s) {
+  var c = calDates(s), g = S.state.group;
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(t('תחנה {n}', { n: s.index }) + ': ' + s.title) +
+    '&dates=' + c.start + '/' + c.end + '&ctz=Asia/Jerusalem&details=' + encodeURIComponent((g.course.title || g.name) + '\n' + location.href.split('#')[0]) +
+    (s.location ? '&location=' + encodeURIComponent(s.location) : '');
+}
+function calIcs(s) {
+  var c = calDates(s), g = S.state.group;
+  function e(x) { return String(x || '').replace(/[\\,;]/g, function (m) { return '\\' + m; }).replace(/\n/g, '\\n'); }
+  var body = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Course-Manager//HE', 'BEGIN:VEVENT', 'UID:' + g.id + '-' + s.id + '@course-manager',
+    'DTSTAMP:' + c.start + 'Z', 'DTSTART;TZID=Asia/Jerusalem:' + c.start, 'DTEND;TZID=Asia/Jerusalem:' + c.end,
+    'SUMMARY:' + e(t('תחנה {n}', { n: s.index }) + ': ' + s.title), 'DESCRIPTION:' + e(g.course.title || g.name), s.location ? 'LOCATION:' + e(s.location) : '',
+    'BEGIN:VALARM', 'TRIGGER:-PT30M', 'ACTION:DISPLAY', 'DESCRIPTION:' + e(s.title), 'END:VALARM', 'END:VEVENT', 'END:VCALENDAR'].filter(Boolean).join('\r\n');
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([body], { type: 'text/calendar;charset=utf-8' }));
+  a.download = 'meeting-' + s.index + '.ics';
+  document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+function openCalendar(s) {
+  var m = modal({ title: t('הוספה ליומן') });
+  m.body.innerHTML = '<p>' + esc(t('תחנה {n}', { n: s.index }) + ': ' + s.title) + '<br><span class="muted">' + esc(fmtDate(s.date, true)) + (s.start ? ' · ' + esc(s.start) : '') + '</span></p>' +
+    '<div class="row"><a class="btn primary" target="_blank" rel="noopener noreferrer" href="' + esc(calGoogle(s)) + '">' + ICON.cal + t('יומן גוגל') + '</a>' +
+    '<button type="button" class="btn" id="icsBtn">' + ICON.download + t('קובץ ליומן (אייפון, אאוטלוק)') + '</button></div>' +
+    '<p class="small muted">' + t('ביומן תופיע גם תזכורת חצי שעה לפני המפגש.') + '</p>';
+  $('#icsBtn', m.body).onclick = function () { calIcs(s); };
+}
+function fbSeenKey() { return 'fbSeen.' + S.state.group.id + '.' + S.state.me.email; }
+function renderHome() {
+  var box = $('#home'); if (!box || !S.state) return;
+  var st = S.state, me = st.me, lv = me.level;
+  var open = st.stations.filter(function (s) { return s.open; });
+  var done = open.filter(function (s) { return s.complete; }).length;
+  var pct = open.length ? Math.round((done / open.length) * 100) : 0;
+  var span = lv.next ? lv.next - lv.from : 1, xp = lv.next ? Math.min(100, Math.round(((me.points - lv.from) / span) * 100)) : 100;
+  var nx = nextMeeting();
+  var cont = open.filter(function (s) { return !s.complete; })[0];
+  var seen = lsGet(fbSeenKey()) || '';
+  var fresh = st.stations.filter(function (s) { return s.mySub && s.mySub.feedback && s.mySub.fbTime > seen; });
+  var R = 30, C = 2 * Math.PI * R;
+  var allDone = open.length && done === st.stations.length;
+  box.innerHTML = '<div class="home-card">' +
+    '<button type="button" class="home-me" id="hAvatar" aria-label="' + esc(t('הדמות שלי')) + '"><span class="hface">' + faceSvg(me.avatar) + '</span>' +
+      '<span class="hwho"><b>' + esc(myName()) + '</b><span class="small">' + esc(t(lv.name)) + '</span><span class="xpbar" aria-hidden="true"><i style="width:' + xp + '%"></i></span>' +
+      '<span class="small muted">' + (lv.next ? esc(t('עוד {n} נקודות ל{l}', { n: lv.next - me.points, l: t(lv.nextName) })) : esc(t('הדרגה הגבוהה ביותר!'))) + '</span></span></button>' +
+    '<div class="home-stats">' +
+      '<button type="button" class="hstat" id="hBoard"><span class="coin">' + ICON.star + '</span><b class="num">' + me.points + '</b><span class="small">' + t('נקודות') + (st.board && st.board.myRank ? ' · ' + esc(t('מקום {r} מתוך {n}', { r: st.board.myRank, n: st.board.total })) : '') + '</span></button>' +
+      '<div class="hstat ring"><svg viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="' + R + '" class="rbg"/><circle cx="36" cy="36" r="' + R + '" class="rfg" stroke-dasharray="' + (C * pct / 100) + ' ' + C + '" transform="rotate(-90 36 36)"/></svg>' +
+        '<span><b class="num">' + done + '/' + open.length + '</b><span class="small">' + t('חדרים הושלמו') + '</span></span></div>' +
+      (nx ? '<button type="button" class="hstat" id="hNext"><span class="coin">' + ICON.cal + '</span><b>' + esc(countdownText(nx)) + '</b><span class="small">' + esc(t('מפגש {n}', { n: nx.index }) + ' · ' + fmtShort(nx.date)) + ' · ' + t('הוספה ליומן') + '</span></button>' : '') +
+    '</div>' +
+    '<div class="home-acts">' +
+      (fresh.length ? '<button type="button" class="btn gold sm" id="hFb">' + ICON.chat + t('יש לך משוב חדש מהמרצה') + '</button>' : '') +
+      (cont ? '<button type="button" class="btn primary sm" id="hCont">' + ICON.play + esc(t('להמשיך: תחנה {n}', { n: cont.index })) + '</button>' : '') +
+      '<button type="button" class="btn sm" id="hJournal">' + ICON.journal + t('יומן הלמידה שלי') + '</button>' +
+      '<button type="button" class="btn sm" id="hRecap">' + ICON.trophy + (allDone ? t('המסע שלי: הסיכום') : t('המסע שלי')) + '</button>' +
+      '<span class="snd-row">' + soundButtons() + '</span>' +
+    '</div></div>';
+  $('#hAvatar').onclick = function () { openAvatarPicker(); };
+  $('#hBoard').onclick = openBoard;
+  if (nx) $('#hNext').onclick = function () { openCalendar(nx); };
+  if (cont) $('#hCont').onclick = function () { openStation(cont.id); };
+  if (fresh.length) $('#hFb').onclick = function () { lsSet(fbSeenKey(), S.state.now); openStation(fresh[0].id); };
+  $('#hJournal').onclick = openJournal;
+  $('#hRecap').onclick = openRecap;
+  bindSoundButtons(box);
+}
+
+/* ---------- לוח מובילים ---------- */
+function boardHtml(b) {
+  if (!b || !b.top) return '';
+  var rows = b.top.map(function (r) {
+    return '<li class="' + (r.me ? 'me' : '') + '"><span class="rk">' + r.rank + '</span><span>' + (r.hidden ? '<i class="muted">' + t('חוקר/ת מסתורי/ת') + '</i>' : esc(r.name) + (r.me ? ' (' + t('את/ה') + ')' : '')) + '</span><span class="num">' + r.points + '</span></li>';
+  }).join('');
+  if (b.myRank > 5) rows += '<li class="me"><span class="rk">' + b.myRank + '</span><span>' + esc(myName()) + ' (' + t('את/ה') + ')</span><span class="num">' + S.state.me.points + '</span></li>';
+  return '<ol class="gboard">' + rows + '</ol>';
+}
+function openBoard() {
+  var st = S.state;
+  var m = modal({ title: t('לוח המובילים') });
+  m.body.innerHTML = '<p class="muted">' + esc(t('מקום {r} מתוך {n} בקבוצה.', { r: st.board.myRank, n: st.board.total })) + '</p>' + boardHtml(st.board) +
+    '<section><h3>' + t('איך צוברים נקודות?') + '</h3><ul class="goal-list small">' +
+    ['צפייה בחומר או פתיחת קישור: 10', 'כל שלב במשימה: 5', 'הגשת תוצר: 20, ובזמן: עוד 15', 'מעבר בשעשועון: 20, וציון מלא: עוד 10', 'יומן החוקר/ת: 10, דירוג המפגש: 5', 'פתיחת תיבת האוצר: 30', 'כל לב שקיבלת בקיר ההשראה: 2'].map(function (x) { return '<li>' + esc(t(x)) + '</li>'; }).join('') +
+    '</ul></section><p class="small muted">' + t('אפשר לבחור להסתתר בלוח דרך "הדמות שלי".') + '</p>';
+}
+
+/* ---------- יומן הלמידה ---------- */
+function openJournal() {
+  var st = S.state, list = st.stations.filter(function (s) { return s.open; });
+  var m = modal({ title: t('יומן הלמידה של {n}', { n: st.me.name }), wide: true });
+  var any = list.some(function (s) { return s.reflection; });
+  m.body.innerHTML = '<div class="journal" id="journalPrint"><p class="muted">' + esc(st.group.course.title || st.group.name) + (st.group.lecturer ? ' · ' + esc(st.group.lecturer) : '') + '</p>' +
+    (any ? list.map(function (s) {
+      return '<section class="jentry"><h3>' + esc(t('תחנה {n}', { n: s.index }) + ': ' + s.title) + '</h3>' + (s.reflection ? '<p>' + esc(s.reflection).replace(/\n/g, '<br>') + '</p>' : '<p class="muted small">' + t('עדיין לא נכתב.') + '</p>') + '</section>';
+    }).join('') : '<p class="muted">' + t('היומן עוד ריק. בסוף כל חדר, אחרי פתיחת תיבת האוצר, כותבים כאן מה לוקחים לכיתה.') + '</p>') +
+    '</div><div class="row"><button type="button" class="btn primary" id="jPrint">' + ICON.download + t('הדפסה או שמירה כ-PDF') + '</button></div>';
+  $('#jPrint', m.body).onclick = function () {
+    document.body.classList.add('printing-journal');
+    setTimeout(function () { window.print(); setTimeout(function () { document.body.classList.remove('printing-journal'); }, 400); }, 50);
+  };
+}
+
+/* ---------- המסע שלי ---------- */
+function openRecap() {
+  var st = S.state, open = st.stations.filter(function (s) { return s.open; });
+  var items = 0, subs = 0, quizzes = 0, rooms = 0;
+  open.forEach(function (s) {
+    (s.missions || []).forEach(function (m) { if (m.kind === 'item' && m.done) items++; });
+    if (s.mySub) subs++;
+    if (s.myQuiz && s.myQuiz.best >= s.passScore) quizzes++;
+    if (s.complete) rooms++;
+  });
+  var badges = st.stations.filter(function (s) { return s.earned; });
+  var stats = [[rooms, 'חדרים נפתחו'], [items, 'חומרים נצפו'], [subs, 'תוצרים הוגשו'], [quizzes, 'שעשועונים עברת'], [st.me.points, 'נקודות']];
+  var m = gpanel('<div class="kick">' + t('המסע שלי') + '</div><h2>' + esc(t('{n}, זה המסע שלך עד עכשיו', { n: myName() })) + '</h2>' +
+    '<div class="recap-face">' + faceSvg(st.me.avatar) + '<b>' + esc(t(st.me.level.name)) + '</b></div>' +
+    '<div class="recap">' + stats.map(function (x, i) { return '<div class="rstat" style="animation-delay:' + (i * .25) + 's"><b class="num" data-to="' + x[0] + '">0</b><span>' + esc(t(x[1])) + '</span></div>'; }).join('') + '</div>' +
+    (badges.length ? '<div class="recap-badges">' + badges.map(function (s, i) { return '<span class="rb" style="animation-delay:' + (1.4 + i * .2) + 's" title="' + esc(s.badgeName || '') + '">' + badgeSvg(s.index, true, 56) + '</span>'; }).join('') + '</div>' : '') +
+    '<div class="grow end"><button type="button" class="gbtn ghost" id="rcCopy">' + t('העתקת סיכום לשיתוף') + '</button><button type="button" class="gbtn go" data-close>' + t('חזרה למפה') + '</button></div>', { wide: true });
+  $all('[data-to]', m.el).forEach(function (el, i) {
+    var to = +el.getAttribute('data-to'), t0 = performance.now() + i * 250;
+    (function step(now) { var p = Math.max(0, Math.min(1, (now - t0) / 900)); el.textContent = Math.round(to * p); if (p < 1) requestAnimationFrame(step); })(performance.now());
+  });
+  SND.play('fanfare'); setTimeout(confetti, 600);
+  SND.say(t('כל הכבוד {n}! תראו כמה למדת', { n: myName() }));
+  $('#rcCopy', m.el).onclick = function () {
+    copyText(t('המסע שלי ב-{c}:', { c: st.group.course.title || st.group.name }) + '\n' + stats.map(function (x) { return x[0] + ' ' + t(x[1]); }).join(' · ') + '\n' + t('דרגה: {l}', { l: t(st.me.level.name) }));
+  };
+}
+
+/* ---------- חדר הבריחה ---------- */
+var OBJ_OF = { youtube: 'tv', drive: 'tv', padlet: 'board', slides: 'easel', file: 'books', form: 'clipboard', kahoot: 'arcade', link: 'portal' };
+var OBJ_NAME = { tv: 'מסך הסרטונים', board: 'קיר הרעיונות', easel: 'לוח המצגות', books: 'מדף הקבצים', clipboard: 'לוח השאלונים', arcade: 'מכונת המשחקים', portal: 'השער לעולם', cabinet: 'ארון החומרים', lab: 'שולחן המעבדה', launch: 'כן השיגור', console: 'עמדת השעשועון' };
+var OBJ_SAY = { tv: 'בואו נצפה!', board: 'הקיר מחכה לרעיון שלך', easel: 'בואו נעבור על המצגת', books: 'יש כאן משהו לקרוא', clipboard: 'יש שאלון שמחכה לך', arcade: 'מוכנים לשחק?', portal: 'בואו נצא לגלות', cabinet: 'עוד חומרים מחכים כאן', lab: 'בואו נבנה את המשימה', launch: 'זה הרגע לשגר את התוצר!', console: 'מוכנים לשעשועון?' };
+var WALL_SLOTS = [{ x: 60, y: 92, w: 270, h: 200 }, { x: 870, y: 92, w: 270, h: 200 }, { x: 340, y: 120, w: 130, h: 150 }, { x: 730, y: 120, w: 130, h: 150 }];
+var FLOOR = { console: { x: 50, y: 395, w: 320, h: 180 }, lab: { x: 780, y: 395, w: 300, h: 180 }, launch: { x: 1085, y: 300, w: 105, h: 275 } };
+var THEME_ROOM = {
+  space: { wall1: '#1A2257', wall2: '#121844', line: '#2A3480', floor1: '#232C6B', floor2: '#151B4A', trim: '#3FE0D0' },
+  mountain: { wall1: '#1C4A47', wall2: '#123533', line: '#2A6662', floor1: '#5B4632', floor2: '#3E2F22', trim: '#F0BE4C' },
+  citadel: { wall1: '#3B2C5E', wall2: '#281E42', line: '#54407F', floor1: '#4A3B33', floor2: '#30261F', trim: '#F0BE4C' },
+  metro: { wall1: '#2C313D', wall2: '#1D2129', line: '#424A5B', floor1: '#3A3F4B', floor2: '#252932', trim: '#FF8A3D' }
+};
+function roomMissions(s) {
+  var items = (s.missions || []).filter(function (m) { return m.kind === 'item'; });
+  var objs = [];
+  var wall = items.length > 4 ? items.slice(0, 3) : items;
+  wall.forEach(function (m, i) { objs.push({ obj: OBJ_OF[m.type] || 'portal', slot: WALL_SLOTS[i], missions: [m] }); });
+  if (items.length > 4) objs.push({ obj: 'cabinet', slot: WALL_SLOTS[3], missions: items.slice(3) });
+  (s.missions || []).forEach(function (m) {
+    if (m.kind === 'lab') objs.push({ obj: 'lab', slot: FLOOR.lab, missions: [m] });
+    if (m.kind === 'sub') objs.push({ obj: 'launch', slot: FLOOR.launch, missions: [m] });
+    if (m.kind === 'quiz') objs.push({ obj: 'console', slot: FLOOR.console, missions: [m] });
+  });
+  objs.forEach(function (o, i) { o.n = i + 1; o.done = o.missions.every(function (m) { return m.done; }); o.cx = o.slot.x + o.slot.w / 2; });
+  return objs;
+}
+/* איורי החפצים. כל ציור נבנה בתיבה של 260x190 ומוקטן לגודל המשבצת */
+var ART = {
+  tv: '<rect x="10" y="8" width="240" height="150" rx="14" fill="#0A0E2A" stroke="#4655B8" stroke-width="8"/><rect x="24" y="22" width="212" height="122" rx="6" fill="#2B3B9C"/><circle cx="130" cy="83" r="32" fill="#FF5C9A"/><path d="M121 67v32l27-16z" fill="#fff"/><rect x="115" y="158" width="30" height="26" fill="#4655B8"/>',
+  board: '<rect x="20" y="4" width="220" height="182" rx="12" fill="#F3EEDD" stroke="#4655B8" stroke-width="8"/><rect x="38" y="22" width="78" height="66" rx="5" fill="#FFC94D" transform="rotate(-6 77 55)"/><rect x="140" y="20" width="78" height="66" rx="5" fill="#7EE7DC"/><rect x="36" y="104" width="78" height="66" rx="5" fill="#FF8FB8"/><rect x="138" y="106" width="78" height="66" rx="5" fill="#B9A6FF" transform="rotate(5 177 139)"/><g stroke="#3A2A00" stroke-width="3" opacity=".35"><path d="M52 46h44M52 60h30M154 42h48M154 56h30M50 128h46M152 130h40"/></g>',
+  easel: '<path d="M60 186l40-60M200 186l-40-60M130 186v-60" stroke="#8A5A2B" stroke-width="10" stroke-linecap="round"/><rect x="20" y="8" width="220" height="130" rx="10" fill="#fff" stroke="#4655B8" stroke-width="8"/><rect x="44" y="70" width="28" height="48" fill="#FF5C9A"/><rect x="86" y="50" width="28" height="68" fill="#FFC94D"/><rect x="128" y="34" width="28" height="84" fill="#3FE0D0"/><rect x="170" y="58" width="28" height="60" fill="#8C6BFF"/>',
+  books: '<rect x="14" y="150" width="232" height="16" rx="4" fill="#8A5A2B"/><rect x="30" y="40" width="34" height="110" rx="4" fill="#FF5C9A"/><rect x="68" y="60" width="30" height="90" rx="4" fill="#FFC94D"/><rect x="102" y="30" width="38" height="120" rx="4" fill="#3FE0D0"/><rect x="144" y="70" width="30" height="80" rx="4" fill="#8C6BFF" transform="rotate(8 159 110)"/><path d="M190 150l14-96 36 6-14 90z" fill="#F3EEDD" stroke="#4655B8" stroke-width="4"/><path d="M206 80h22M204 96h20M202 112h20" stroke="#4655B8" stroke-width="3"/>',
+  clipboard: '<rect x="60" y="14" width="140" height="172" rx="14" fill="#C08A4A"/><rect x="74" y="34" width="112" height="140" rx="6" fill="#fff"/><rect x="100" y="6" width="60" height="22" rx="8" fill="#4655B8"/><g fill="none" stroke-width="5" stroke-linecap="round"><rect x="86" y="54" width="18" height="18" rx="3" stroke="#4655B8"/><path d="M89 63l5 5 9-11" stroke="#45E08F"/><path d="M114 63h58" stroke="#B6BCE6"/><rect x="86" y="92" width="18" height="18" rx="3" stroke="#4655B8"/><path d="M89 101l5 5 9-11" stroke="#45E08F"/><path d="M114 101h58" stroke="#B6BCE6"/><rect x="86" y="130" width="18" height="18" rx="3" stroke="#4655B8"/><path d="M114 139h58" stroke="#B6BCE6"/></g>',
+  arcade: '<path d="M50 186V40q0-30 30-30h100q30 0 30 30v146z" fill="#8C6BFF"/><rect x="70" y="30" width="120" height="80" rx="8" fill="#0A0E2A"/><path d="M90 90l16-30 16 30z" fill="#FF5C9A"/><circle cx="150" cy="72" r="16" fill="#3FE0D0"/><rect x="60" y="120" width="140" height="40" rx="8" fill="#5B3FD6"/><circle cx="100" cy="140" r="10" fill="#FFC94D"/><circle cx="130" cy="140" r="10" fill="#45E08F"/><circle cx="160" cy="140" r="10" fill="#FF5C9A"/>',
+  portal: '<ellipse cx="130" cy="100" rx="96" ry="88" fill="#0A0E2A" stroke="#4655B8" stroke-width="8"/><ellipse cx="130" cy="100" rx="78" ry="70" fill="#2B3B9C"/><circle cx="130" cy="100" r="46" fill="#3FE0D0"/><path d="M84 100h92M130 54v92M98 72q32 18 64 0M98 128q32-18 64 0" stroke="#0A5C55" stroke-width="5" fill="none"/>',
+  cabinet: '<rect x="40" y="6" width="180" height="180" rx="12" fill="#6B4A2B"/><rect x="54" y="20" width="72" height="150" rx="6" fill="#8A5A2B"/><rect x="134" y="20" width="72" height="150" rx="6" fill="#8A5A2B"/><circle cx="118" cy="96" r="6" fill="#FFC94D"/><circle cx="142" cy="96" r="6" fill="#FFC94D"/>',
+  lab: '<rect x="10" y="80" width="290" height="22" rx="8" fill="#4655B8"/><rect x="30" y="102" width="16" height="78" fill="#3A458F"/><rect x="264" y="102" width="16" height="78" fill="#3A458F"/><path d="M50 80V20h20v60z" fill="#C9F7F2" opacity=".85"/><path d="M50 50h20v30H50z" fill="#3FE0D0"/><path d="M100 80l18-50h24l18 50z" fill="#C9F7F2" opacity=".85"/><path d="M106 65h48l5 15H101z" fill="#FF5C9A"/><rect x="116" y="15" width="28" height="18" rx="4" fill="#C9F7F2"/><g transform="translate(210 22)"><path d="M0 58h40l-6-30H6z" fill="#C8643B"/><path d="M20 30c-2-20 10-30 22-34-4 12-10 22-22 34z" fill="#45E08F"/><path d="M20 30C14 16 2 12-6 12c4 10 12 16 26 18z" fill="#2CB56E"/></g>',
+  launch: '<rect x="5" y="255" width="95" height="18" rx="6" fill="#4655B8"/><g class="rocket"><path d="M52 40c26 22 32 60 24 100H28c-8-40-2-78 24-100z" fill="#F3F4FF"/><circle cx="52" cy="90" r="12" fill="#3FE0D0" stroke="#4655B8" stroke-width="4"/><path d="M28 120l-18 32 22-6zM76 120l18 32-22-6z" fill="#FF5C9A"/><path class="flame" d="M35 142q17 40 34 0" fill="#FFC94D" opacity="0"/></g><path d="M52 140v115" stroke="#3A458F" stroke-width="6"/>',
+  console: '<path d="M20 175 L60 35 L260 35 L300 175Z" fill="#3A458F"/><path d="M60 35 L260 35 L252 65 L68 65Z" fill="#4655B8"/><circle cx="100" cy="110" r="24" fill="#7A5CFF"/><circle cx="160" cy="110" r="24" fill="#E2457E"/><circle cx="220" cy="110" r="24" fill="#1BA6A0"/><path d="M160 35v-20" stroke="#4655B8" stroke-width="8"/><circle cx="160" cy="12" r="14" fill="#FFC94D"/>'
+};
+var ART_BOX = { lab: [310, 190], launch: [105, 275], console: [320, 180] };
+function objSvg(o) {
+  var box = ART_BOX[o.obj] || [260, 190], sl = o.slot;
+  var sc = Math.min(sl.w / box[0], sl.h / box[1]);
+  var ox = sl.x + (sl.w - box[0] * sc) / 2, oy = sl.y + (sl.h - box[1] * sc) / 2;
+  var label = t(OBJ_NAME[o.obj]) + (o.missions.length === 1 && o.missions[0].title ? ': ' + o.missions[0].title : '');
+  return '<g class="hot' + (o.done ? ' done' : '') + '" data-o="' + (o.n - 1) + '" tabindex="0" role="button" aria-label="' + esc(t('משימה {n}', { n: o.n }) + ': ' + label + (o.done ? ', ' + t('הושלמה') : '')) + '">' +
+    '<ellipse class="glow" cx="' + (sl.x + sl.w / 2) + '" cy="' + (sl.y + sl.h / 2) + '" rx="' + (sl.w * .62) + '" ry="' + (sl.h * .62) + '" fill="url(#hglow)"/>' +
+    '<g transform="translate(' + ox + ' ' + oy + ') scale(' + sc + ')">' + ART[o.obj] + '</g>' +
+    '<g transform="translate(' + (sl.x + sl.w - 8) + ' ' + (sl.y + 10) + ')"><circle class="ring" r="22" fill="none" stroke="#FFC94D" stroke-width="4"/><circle class="tag" r="22"/>' +
+    '<text class="tagt" y="8" text-anchor="middle">' + (o.done ? '✓' : o.n) + '</text></g></g>';
+}
+function windowSvg(theme, g) {
+  var bg = JourneyCore.safeUrl(g.bgUrl);
+  if (theme === 'mountain') return '<rect x="480" y="70" width="240" height="220" rx="14" fill="#BDE3F5" stroke="#5B4632" stroke-width="14"/><circle cx="660" cy="120" r="24" fill="#FFD45C"/><path d="M487 283l70-110 50 70 40-50 66 90z" fill="#3D7A55"/><path d="M557 173l20 30-14 4-6-12z" fill="#fff"/><line x1="600" y1="70" x2="600" y2="290" stroke="#5B4632" stroke-width="8"/>';
+  if (theme === 'citadel') return '<path d="M490 290V140a110 90 0 0 1 220 0v150z" fill="#2B1E6E" stroke="#6B5B3E" stroke-width="14"/><g fill="#fff"><circle class="twinkle" cx="540" cy="150" r="2.5"/><circle class="twinkle" cx="650" cy="120" r="2"/></g><path d="M520 290v-80h30v-20h20v20h30v80zM610 290v-110h24v-24h16v24h24v110z" fill="#4A3B7A"/><path d="M640 156v-30l26 9-26 9" fill="#FF5C9A"/>';
+  if (theme === 'metro') return '<rect x="440" y="90" width="320" height="170" rx="40" fill="#0D1016" stroke="#555D70" stroke-width="14"/><g class="tunnel" stroke="#FF8A3D" stroke-width="6" stroke-linecap="round"><path d="M460 140h60M560 140h60M660 140h60"/><path d="M470 210h50M570 210h50M670 210h50" stroke="#FFC94D"/></g>';
+  var inner = bg ? '<clipPath id="pclip"><circle cx="600" cy="185" r="104"/></clipPath><image href="' + esc(bg) + '" x="496" y="81" width="208" height="208" preserveAspectRatio="xMidYMid slice" clip-path="url(#pclip)"/>'
+    : '<circle cx="600" cy="185" r="104" fill="url(#space)"/><g fill="#fff"><circle class="twinkle" cx="550" cy="130" r="2.5"/><circle class="twinkle" cx="650" cy="115" r="2" style="animation-delay:.6s"/><circle class="twinkle" cx="670" cy="230" r="2.5" style="animation-delay:1.2s"/><circle class="twinkle" cx="535" cy="240" r="2" style="animation-delay:.3s"/></g><g class="float"><circle cx="622" cy="198" r="44" fill="url(#planet)"/><ellipse cx="622" cy="198" rx="72" ry="14" fill="none" stroke="#FFC94D" stroke-width="5" transform="rotate(-14 622 198)"/></g>';
+  return '<circle cx="600" cy="185" r="116" fill="#0B0F2E" stroke="#3A458F" stroke-width="14"/>' + inner;
+}
+function roomSvg(s, objs) {
+  var g = S.state.group, theme = g.theme === 'custom' ? 'space' : (THEME_ROOM[g.theme] ? g.theme : 'space'), c = THEME_ROOM[theme];
+  var all = objs.every(function (o) { return o.done; });
+  var digits = (s.missions || []).map(function (m) { return m.done ? m.digit : '?'; }).join('');
+  return '<svg class="room-svg" viewBox="0 0 1200 700" role="img" aria-label="' + esc(t('החדר של תחנה {n}', { n: s.index })) + '">' +
+    '<defs><linearGradient id="rwall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + c.wall1 + '"/><stop offset="1" stop-color="' + c.wall2 + '"/></linearGradient>' +
+    '<linearGradient id="rfloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + c.floor1 + '"/><stop offset="1" stop-color="' + c.floor2 + '"/></linearGradient>' +
+    '<radialGradient id="space" cx=".4" cy=".35"><stop offset="0" stop-color="#2B1E6E"/><stop offset="1" stop-color="#070A22"/></radialGradient>' +
+    '<radialGradient id="planet" cx=".35" cy=".3"><stop offset="0" stop-color="#7DF0E3"/><stop offset=".6" stop-color="#21A79E"/><stop offset="1" stop-color="#0D5D5A"/></radialGradient>' +
+    '<radialGradient id="hglow"><stop offset="0" stop-color="#3FE0D0" stop-opacity=".5"/><stop offset="1" stop-color="#3FE0D0" stop-opacity="0"/></radialGradient>' +
+    '<radialGradient id="gglow"><stop offset="0" stop-color="#FFE38A" stop-opacity=".9"/><stop offset="1" stop-color="#FFC94D" stop-opacity="0"/></radialGradient></defs>' +
+    '<rect width="1200" height="700" fill="url(#rwall)"/>' +
+    '<g stroke="' + c.line + '" stroke-width="3" fill="none"><path d="M0 80h1200M0 385h1200"/></g>' +
+    '<path d="M0 515H1200V700H0Z" fill="url(#rfloor)"/><g stroke="' + c.line + '" stroke-width="2" opacity=".7"><path d="M0 560h1200M0 615h1200M0 665h1200M600 515V700M400 515L300 700M800 515L900 700M200 515L0 680M1000 515L1200 680"/></g>' +
+    '<path d="M0 515h1200" stroke="' + c.trim + '" stroke-width="4" opacity=".6"/>' +
+    windowSvg(theme, g) +
+    '<text class="room-title" x="600" y="345" text-anchor="middle">' + esc(t('תחנה {n}', { n: s.index }) + ' · ' + s.title).slice(0, 60) + '</text>' +
+    objs.map(objSvg).join('') +
+    '<g class="hot chest' + (all ? ' ready' : '') + '" data-o="chest" tabindex="0" role="button" aria-label="' + esc(t('תיבת האוצר') + (all ? '' : ', ' + t('נעולה'))) + '">' +
+      '<g class="rays' + (s.complete && G.opened ? ' on' : '') + '" transform="translate(600 470)"><g fill="#FFE38A" opacity=".5"><path d="M0 0L-30 -260L30 -260Z"/><path d="M0 0L-30 -260L30 -260Z" transform="rotate(45)"/><path d="M0 0L-30 -260L30 -260Z" transform="rotate(-45)"/><path d="M0 0L-30 -260L30 -260Z" transform="rotate(90)"/><path d="M0 0L-30 -260L30 -260Z" transform="rotate(-90)"/></g></g>' +
+      '<ellipse class="glow" cx="600" cy="500" rx="170" ry="90" fill="url(#gglow)"/><ellipse cx="600" cy="585" rx="130" ry="16" fill="#000" opacity=".3"/>' +
+      '<rect x="490" y="490" width="220" height="92" rx="12" fill="#8A4B22"/><rect x="490" y="510" width="220" height="12" fill="#6B3815"/><rect x="520" y="490" width="16" height="92" fill="#FFC94D"/><rect x="664" y="490" width="16" height="92" fill="#FFC94D"/>' +
+      '<g class="lid' + (G.opened ? ' open' : '') + '"><path d="M490 492v-30a40 40 0 0 1 40-40h140a40 40 0 0 1 40 40v30z" fill="#A65A28"/><rect x="520" y="422" width="16" height="70" fill="#FFC94D"/><rect x="664" y="422" width="16" height="70" fill="#FFC94D"/></g>' +
+      '<g class="lock' + (G.opened ? ' gone' : '') + '"><rect x="555" y="476" width="90" height="62" rx="10" fill="#FFC94D" stroke="#3A2A00" stroke-width="3"/><path d="M576 478v-14a24 24 0 0 1 48 0v14" stroke="#FFC94D" stroke-width="9" fill="none"/>' +
+      '<text x="600" y="516" text-anchor="middle" class="lock-txt" direction="ltr" textLength="' + Math.min(80, 16 * digits.length) + '" lengthAdjust="spacingAndGlyphs">' + (digits || '★') + '</text></g></g>' +
+    '<g class="avatar" style="transform:translateX(' + G.avX + 'px)">' + avatarSvg(S.state.me.avatar, 0, 640, 1.3) + '</g>' +
+    '</svg>';
+}
+function roomHud(s) {
+  var ms = s.missions || [];
+  return '<button type="button" class="gbtn ghost sm" id="roomBack">' + ICON.back + '<span class="lbl-hide">' + t('למפה') + '</span></button>' +
+    '<div class="rh-title"><b>' + esc(t('תחנה {n}', { n: s.index })) + '</b><span>' + esc(s.title) + '</span></div>' +
+    '<div class="rh-right"><div class="code" aria-label="' + esc(t('ספרות הקוד')) + '">' + ms.map(function (m) { return '<span class="' + (m.done ? 'got' : '') + '">' + (m.done ? m.digit : '?') + '</span>'; }).join('') + '</div>' +
+    '<span class="coins" id="roomCoins">' + ICON.star + '<b class="num">' + S.state.me.points + '</b></span>' + soundButtons() + '</div>';
+}
+function roomStrip(s, objs) {
+  var all = objs.every(function (o) { return o.done; });
+  return objs.map(function (o) {
+    var title = o.missions.length === 1 && o.missions[0].title ? o.missions[0].title : t(OBJ_NAME[o.obj]);
+    return '<button type="button" class="mbtn' + (o.done ? ' done' : '') + '" data-o="' + (o.n - 1) + '"><span class="n">' + (o.done ? '✓' : o.n) + '</span><span class="t">' + esc(title) + '<small>' + esc(t(OBJ_NAME[o.obj])) + '</small></span></button>';
+  }).join('') + '<button type="button" class="mbtn chest' + (s.complete ? ' done' : '') + '" data-o="chest"><span class="n">★</span><span class="t">' + t('תיבת האוצר') + '<small>' + (all ? t('מוכנה לפתיחה!') : esc(t('צריך את כל {n} הספרות', { n: (s.missions || []).length }))) + '</small></span></button>';
+}
+function openRoom(id) {
+  var s = findStation(id);
+  if (!s) return;
+  if (!S.state.me.avatar && !S.preview) { openAvatarPicker(function () { openRoom(id); }); return; }
+  closeRoom();
+  G.sid = id; G.avX = 420; G.opened = !!s.complete;
+  var ov = document.createElement('div');
+  ov.className = 'room-ov'; ov.setAttribute('dir', 'rtl'); ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true');
+  ov.setAttribute('aria-label', t('תחנה {n}', { n: s.index }) + ': ' + s.title);
+  ov.innerHTML = (S.preview ? '<div class="prevbar">' + t('מצב תצוגת מרצה: כך המשתתפים רואים את החדר. שום דבר לא נשמר.') + '</div>' : '') +
+    '<div class="room"><header class="room-hud" id="roomHud"></header><div class="scene" id="roomScene"></div><div class="bubble" id="roomBubble" hidden></div><nav class="room-strip" id="roomStrip" aria-label="' + esc(t('המשימות בחדר')) + '"></nav>' +
+    (s.desc ? '<details class="room-about"><summary>' + t('על המפגש') + '</summary><p>' + esc(s.desc) + '</p></details>' : '') + '</div>';
+  document.body.appendChild(ov);
+  document.body.style.overflow = 'hidden';
+  var m = { el: ov, close: closeRoom };
+  G.room = m; modalStack.push(m);
+  refreshRoom(true);
+  setTimeout(function () {
+    var left = (s.missions || []).filter(function (x) { return !x.done; }).length;
+    var msg = s.complete ? t('החדר הזה כבר פתוח. אפשר לחזור לכל משימה.') : left ? t('מצאו את {n} הספרות ופתחו את תיבת האוצר!', { n: (s.missions || []).length }) : t('כל הספרות אצלך! לתיבה!');
+    bubble(msg, 3600); SND.say(msg);
+  }, 400);
+}
+function closeRoom() {
+  if (!G.room) return;
+  var el = G.room.el; modalStack = modalStack.filter(function (x) { return x !== G.room; });
+  G.room = null; G.sid = null; SND.stopMusic();
+  if (el.parentNode) el.parentNode.removeChild(el);
+  if (!modalStack.length && !$('.admin:not([hidden])')) document.body.style.overflow = '';
+  if (S.state) renderHome();
+}
+function refreshRoom(full) {
+  if (!G.room) return;
+  var s = findStation(G.sid); if (!s) { closeRoom(); return; }
+  var objs = roomMissions(s); G.objs = objs;
+  var el = G.room.el;
+  $('#roomHud', el).innerHTML = roomHud(s);
+  $('#roomStrip', el).innerHTML = roomStrip(s, objs);
+  if (full || !$('.room-svg', el)) $('#roomScene', el).innerHTML = roomSvg(s, objs);
+  else {
+    objs.forEach(function (o) {
+      var g = $('.hot[data-o="' + (o.n - 1) + '"]', el); if (!g) return;
+      g.classList.toggle('done', o.done); $('.tagt', g).textContent = o.done ? '✓' : o.n;
+    });
+    var all = objs.every(function (o) { return o.done; });
+    $('.chest', el).classList.toggle('ready', all);
+    var digits = (s.missions || []).map(function (m) { return m.done ? m.digit : '?'; }).join('');
+    var lt = $('.lock-txt', el); if (lt) lt.textContent = digits || '★';
+  }
+  var next = objs.filter(function (o) { return !o.done; })[0];
+  $all('.hot', el).forEach(function (h) { h.classList.toggle('pulse', next ? h.getAttribute('data-o') === String(next.n - 1) : (h.getAttribute('data-o') === 'chest' && !G.opened)); });
+  $('#roomBack', el).onclick = closeRoom;
+  bindSoundButtons($('#roomHud', el));
+  $all('[data-o]', el).forEach(function (h) {
+    var go = function () { onObject(h.getAttribute('data-o')); };
+    h.onclick = go;
+    if (h.tagName !== 'BUTTON') h.onkeydown = function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } };
+  });
+}
+function walkTo(x, cb) {
+  var el = G.room && $('.avatar', G.room.el);
+  if (!el || REDUCE || Math.abs(x - G.avX) < 5) { G.avX = x; if (el) el.style.transform = 'translateX(' + x + 'px)'; if (cb) cb(); return; }
+  el.classList.add('walk');
+  var steps = setInterval(function () { SND.play('step'); }, 280);
+  G.avX = x; el.style.transform = 'translateX(' + x + 'px)';
+  setTimeout(function () { clearInterval(steps); el.classList.remove('walk'); if (cb) cb(); }, 1050);
+}
+function bubble(text, ms) {
+  if (!G.room) return;
+  var b = $('#roomBubble', G.room.el), sc = $('#roomScene', G.room.el), r = sc.getBoundingClientRect(), k = r.width / 1200;
+  b.textContent = text; b.hidden = false;
+  b.style.left = Math.max(8, Math.min(r.width - 300, G.avX * k - 80)) + 'px';
+  b.style.top = Math.max(8, sc.offsetTop + 390 * k) + 'px';
+  b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop');
+  clearTimeout(bubble.t); bubble.t = setTimeout(function () { b.hidden = true; }, ms || 2600);
+}
+function onObject(k) {
+  if (G.busy) return;
+  SND.unlock(); SND.play('tap');
+  var s = findStation(G.sid);
+  if (k === 'chest') { walkTo(770, function () { openChest(s); }); return; }
+  var o = G.objs[+k]; if (!o) return;
+  var x = Math.max(120, Math.min(1080, o.cx + (o.cx > 600 ? -60 : 60)));
+  walkTo(x, function () {
+    var say = t(OBJ_SAY[o.obj]); bubble(say, 1600); SND.say(say);
+    setTimeout(function () {
+      if (o.obj === 'lab') missionLab(s, o);
+      else if (o.obj === 'launch') missionLaunch(s, o);
+      else if (o.obj === 'console') missionQuiz(s, o);
+      else missionItems(s, o);
+    }, 350);
+  });
+}
+/** סימון משימה: עדכון מיידי במסך, ואחר כך שמירה בשרת */
+function earnFx(m, el, pts) {
+  SND.play('coin'); floatPts(pts, el);
+  setTimeout(function () { SND.play('digit'); toast(t('קיבלת ספרה לקוד: {d}', { d: m.digit })); }, 350);
+  var s = findStation(G.sid), left = (s.missions || []).filter(function (x) { return !x.done && x.key !== m.key; }).length;
+  setTimeout(function () {
+    var msg = left ? t('יש! עוד {n} ספרות לתיבה', { n: left }) : t('כל הספרות אצלך! לתיבה!');
+    bubble(msg); SND.say(left ? cheer() : msg);
+  }, 900);
+}
+function sendProgress(s, key, done, onOk, onFail) {
+  api('progress', Object.assign(authPayload(), { stationId: s.id, key: key, done: done })).then(function (st) {
+    gameApply(st); if (onOk) onOk();
+  }).catch(function (e) {
+    if (handleAuthError(e)) return;
+    toast(errMsg(e), 5000); if (onFail) onFail();
+  });
+}
+function itemMissionHtml(m) {
+  var it = { type: m.type, url: m.url }, emb = embedUrl(it), meta = ITEM_META[m.type] || ITEM_META.link;
+  return '<div class="gitem' + (m.done ? ' done' : '') + '" data-key="' + esc(m.key) + '"><div class="gi-head"><span class="gi-ic">' + ICON[meta.icon] + '</span><div class="gi-tx"><b>' + esc(m.title || t(meta.label)) + '</b><span>' + esc(t(meta.label)) + '</span></div></div>' +
+    '<div class="grow">' + (emb ? '<button type="button" class="gbtn link sm" data-embed="' + esc(emb) + '">' + ICON.play + t('צפייה כאן') + '</button>' : '') +
+    '<a class="gbtn link sm" data-open href="' + esc(safeHref(m.url)) + '" target="_blank" rel="noopener noreferrer">' + ICON.ext + t('פתיחה') + '</a>' +
+    '<button type="button" class="gbtn ' + (m.done ? 'ok' : 'go') + ' sm" data-done>' + (m.done ? ICON.check + t('הושלם') : t('סיימתי! תנו לי ספרה')) + '</button></div></div>';
+}
+function missionItems(s, o) {
+  var single = o.missions.length === 1;
+  var p = gpanel('<div class="kick">' + esc(t('משימה {n}', { n: o.n }) + ' · ' + t(OBJ_NAME[o.obj])) + '</div><h2>' + esc(single ? (o.missions[0].title || t(OBJ_NAME[o.obj])) : t(OBJ_NAME[o.obj])) + '</h2>' +
+    '<p class="gmuted">' + (single ? t('פתחו את החומר, ואחרי שסיימתם לחצו "סיימתי" כדי לקבל ספרה לקוד.') : t('בארון יש כמה חומרים. כל חומר שמסיימים נותן ספרה לקוד.')) + '</p>' +
+    o.missions.map(itemMissionHtml).join('') +
+    '<div class="grow end"><span></span><button type="button" class="gbtn ghost" data-close>' + t('חזרה לחדר') + '</button></div>', { wide: true });
+  $all('.gitem', p.el).forEach(function (row) {
+    var key = row.getAttribute('data-key'), m = o.missions.filter(function (x) { return x.key === key; })[0];
+    var eb = $('[data-embed]', row);
+    if (eb) eb.onclick = function () {
+      var f = document.createElement('iframe');
+      f.className = 'embed'; f.src = eb.getAttribute('data-embed'); f.allow = 'autoplay; encrypted-media; fullscreen'; f.allowFullscreen = true;
+      f.title = t('נגן וידאו'); f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      row.appendChild(f); eb.hidden = true;
+    };
+    $('[data-done]', row).onclick = function () {
+      var btn = this;
+      if (m.done) { toast(t('המשימה הזו כבר הושלמה')); return; }
+      m.done = true; btn.className = 'gbtn ok sm'; btn.innerHTML = ICON.check + t('הושלם'); row.classList.add('done');
+      earnFx(m, btn, 10);
+      sendProgress(s, key, true, function () {
+        if (o.missions.every(function (x) { return x.done; })) setTimeout(p.close, 700);
+      }, function () { m.done = false; btn.className = 'gbtn go sm'; btn.textContent = t('סיימתי! תנו לי ספרה'); row.classList.remove('done'); });
+    };
+  });
+}
+function missionLab(s, o) {
+  var reqs = s.requirements || [], done = (s.reqDone || []).slice();
+  var p = gpanel('<div class="kick">' + esc(t('משימה {n}', { n: o.n }) + ' · ' + t(OBJ_NAME.lab)) + '</div><h2>' + t('המשימה של המפגש') + '</h2>' +
+    '<p class="gmuted">' + t('כל שלב שמסמנים מדליק מבחנה. כשכל השלבים מסומנים, מקבלים ספרה לקוד.') + '</p>' +
+    '<ul class="gchecks">' + reqs.map(function (r, i) { return '<li><input type="checkbox" id="rq' + i + '"' + (done[i] ? ' checked' : '') + '><label for="rq' + i + '"><span class="box">' + ICON.check + '</span><span>' + esc(r) + '</span></label></li>'; }).join('') + '</ul>' +
+    '<div class="tubes" aria-hidden="true">' + reqs.map(function (r, i) { return '<span class="tube' + (done[i] ? ' on' : '') + '"></span>'; }).join('') + '</div>' +
+    '<div class="grow end"><span></span><button type="button" class="gbtn ghost" data-close>' + t('חזרה לחדר') + '</button></div>', { wide: true });
+  reqs.forEach(function (r, i) {
+    var cb = $('#rq' + i, p.el);
+    cb.onchange = function () {
+      var on = cb.checked; done[i] = on;
+      $all('.tube', p.el)[i].classList.toggle('on', on);
+      var all = done.every(Boolean);
+      if (on) { SND.play('digit'); floatPts(5, cb.nextElementSibling); }
+      if (all) { var lm = (s.missions || []).filter(function (m) { return m.kind === 'lab'; })[0]; if (lm) { earnFx(lm, cb.nextElementSibling, 0); } }
+      sendProgress(s, 'rq:' + i, on, function () { if (all) setTimeout(p.close, 900); }, function () { cb.checked = !on; done[i] = !on; $all('.tube', p.el)[i].classList.toggle('on', !on); });
+    };
+  });
+}
+function feedbackHtml(sub) {
+  if (!sub || !sub.feedback) return '';
+  return '<div class="gfb"><span class="gfb-pic">' + esc((S.state.group.lecturer || 'מ').trim().charAt(0)) + '</span><div><b>' + esc(S.state.group.lecturer || t('המרצה')) + '</b>' +
+    (sub.checked ? ' · <span class="okc">' + t('נבדק') + ' ✓</span>' : '') + '<p>' + esc(sub.feedback) + '</p><small class="gmuted">' + esc(fmtStamp(sub.fbTime)) + '</small></div></div>';
+}
+function missionLaunch(s, o) {
+  var padlet = (s.items || []).filter(function (it) { return it.type === 'padlet'; })[0], sub = s.mySub;
+  if (sub && sub.feedback) lsSet(fbSeenKey(), S.state.now);
+  var p = gpanel('<div class="kick">' + esc(t('משימה {n}', { n: o.n }) + ' · ' + t(OBJ_NAME.launch)) + '</div><h2>' + t('זה הרגע לשגר את התוצר!') + '</h2>' +
+    '<p class="gmuted">' + esc(s.submitHint || (s.requirePadlet ? t('אחרי שהעליתם את התוצר ל-Padlet, העתיקו את הקישור לפוסט שלכם והדביקו אותו כאן.') : t('הדביקו כאן את הקישור לתוצר שלכם.'))) + '</p>' +
+    (padlet ? '<a class="gbtn gold sm" style="justify-self:start" href="' + esc(safeHref(padlet.url)) + '" target="_blank" rel="noopener noreferrer">' + ICON.padlet + t('הגש תוצר ב-Padlet') + '</a>' : '') +
+    (sub ? '<div class="gok">' + ICON.check + '<span>' + esc(t('הוגש ב-{d}', { d: fmtStamp(sub.time) })) + (s.onTime ? ' · ' + t('בזמן!') : '') + '</span></div>' : '') +
+    feedbackHtml(sub) +
+    '<label class="glabel" for="gSub">' + t('קישור לתוצר') + '</label><input class="ginput" id="gSub" type="url" dir="ltr" placeholder="' + (s.requirePadlet ? 'https://padlet.com/…' : 'https://…') + '" value="' + esc(sub ? sub.link : '') + '">' +
+    '<label class="gcheck"><input type="checkbox" id="gShare"' + (sub ? (sub.share ? ' checked' : '') : '') + '><span>' + t('לשתף את התוצר בקיר ההשראה של הקבוצה') + '</span></label>' +
+    '<p class="err" id="gSubErr" role="alert" hidden></p>' +
+    '<div class="grow end"><button type="button" class="gbtn ghost" data-close>' + t('חזרה לחדר') + '</button><button type="button" class="gbtn gold" id="gLaunch">' + (sub ? t('עדכון ושיגור מחדש') : t('3, 2, 1, שיגור!')) + '</button></div>', { wide: true });
+  $('#gLaunch', p.el).onclick = function () {
+    var link = $('#gSub', p.el).value.trim(), er = $('#gSubErr', p.el), btn = this;
+    er.hidden = true;
+    if (!JourneyCore.safeUrl(link)) { er.hidden = false; er.textContent = t('זה לא נראה כמו קישור. העתיקו את הכתובת המלאה, שמתחילה ב-https://'); SND.play('soft'); return; }
+    btn.disabled = true;
+    var n = 3, wasDone = !!s.mySub;
+    var cd = setInterval(function () {
+      if (n > 0) { btn.textContent = n + '…'; SND.play('tick'); n--; return; }
+      clearInterval(cd);
+      api('submit', Object.assign(authPayload(), { stationId: s.id, link: link, share: $('#gShare', p.el).checked })).then(function (st) {
+        p.close(); SND.play('whoosh'); launchRocket();
+        var m = (s.missions || []).filter(function (x) { return x.kind === 'sub'; })[0];
+        if (!wasDone && m) earnFx(m, $('#roomCoins'), 20);
+        gameApply(st);
+        var ns = findStation(s.id);
+        if (!wasDone && ns && ns.onTime) setTimeout(function () { toast(t('הוגש בזמן! עוד 15 נקודות בונוס')); SND.play('coin'); }, 1500);
+        SND.say(t('התוצר שוגר! כל הכבוד'));
+      }).catch(function (e) {
+        if (handleAuthError(e)) return;
+        btn.disabled = false; btn.textContent = t('3, 2, 1, שיגור!'); er.hidden = false; er.textContent = errMsg(e); SND.play('soft');
+      });
+    }, 550);
+  };
+}
+function launchRocket() {
+  var r = G.room && $('.rocket', G.room.el); if (!r || REDUCE) return;
+  var f = $('.flame', r); if (f) f.setAttribute('opacity', '1');
+  r.style.transition = 'transform 1.4s cubic-bezier(.6,0,.9,.5)'; r.style.transform = 'translateY(-520px)';
+  setTimeout(function () { r.style.transition = 'none'; r.style.transform = 'translateY(40px)'; if (f) f.setAttribute('opacity', '0'); setTimeout(function () { r.style.transition = 'transform .8s cubic-bezier(.2,1.3,.4,1)'; r.style.transform = ''; }, 50); }, 1700);
+}
+function missionQuiz(s, o) {
+  var qs = s.quiz || [], qi = 0, right = 0, answers = [], used50 = false, usedHint = false, TIME = 40;
+  var p = gpanel('<div class="kick">' + esc(t('משימה {n}', { n: o.n }) + ' · ' + t(OBJ_NAME.console)) + '</div><h2>' + t('השעשועון של החוקרים') + '</h2><div class="show" id="gShow"></div>', { wide: true, sticky: true });
+  var box = $('#gShow', p.el);
+  function intro() {
+    box.innerHTML = '<p>' + esc(t('{n} שאלות, {s} שניות לכל שאלה. יש לכם שני גלגלי הצלה: 50:50 ורמז. ציון עובר: {p}.', { n: qs.length, s: TIME, p: s.passScore })) + '</p>' +
+      (s.myQuiz ? '<p class="gmuted">' + esc(t('הציון הגבוה שלך עד עכשיו: {b}', { b: s.myQuiz.best })) + '</p>' : '') +
+      '<div class="grow end"><button type="button" class="gbtn ghost" data-close>' + t('חזרה לחדר') + '</button><button type="button" class="gbtn go" id="gqGo">' + t('מתחילים!') + '</button></div>';
+    $('[data-close]', box).onclick = p.close;
+    $('#gqGo', box).onclick = function () { qi = 0; right = 0; answers = []; used50 = usedHint = false; render(); };
+  }
+  function render() {
+    var q = qs[qi], left = TIME;
+    box.innerHTML = '<div class="grow end"><span class="score">' + esc(t('שאלה {i} מתוך {n}', { i: qi + 1, n: qs.length })) + '</span><span class="score">' + esc(t('{r} נכונות', { r: right })) + '</span></div>' +
+      '<div class="timer"><i id="gqBar"></i></div><div class="qn">' + esc(q.q) + '</div>' +
+      '<div class="tiles">' + q.options.map(function (op, j) { return '<button type="button" class="tile c' + (j % 4) + '" data-a="' + j + '"><b>' + t('אבגדהוזח').charAt(j) + '</b><span>' + esc(op) + '</span></button>'; }).join('') + '</div>' +
+      '<div class="life"><button type="button" id="gq50"' + (used50 || q.options.length < 3 ? ' disabled' : '') + '>50:50</button><button type="button" id="gqHint"' + (usedHint || !q.hint ? ' disabled' : '') + '>' + t('רמז') + '</button></div>' +
+      '<div class="explain" id="gqExp" hidden></div><div class="grow end" id="gqNav" hidden></div>';
+    var bar = $('#gqBar', box);
+    clearInterval(p.timer);
+    p.timer = setInterval(function () {
+      left -= .1; bar.style.width = Math.max(0, left / TIME * 100) + '%';
+      if (left < 5.05 && left > 0 && Math.abs(left - Math.round(left)) < .05) SND.play('tick');
+      if (left <= 0) { clearInterval(p.timer); answer(-1, null); }
+    }, 100);
+    $all('[data-a]', box).forEach(function (b) { b.onclick = function () { answer(+b.getAttribute('data-a'), b); }; });
+    $('#gq50', box).onclick = function () {
+      var b = this; b.disabled = true; used50 = true; SND.play('tap');
+      api('quizFifty', Object.assign(authPayload(), { stationId: s.id, index: qi })).then(function (r) {
+        r.remove.forEach(function (j) { var x = $('[data-a="' + j + '"]', box); if (x) x.classList.add('gone'); });
+      }).catch(function (e) { if (!handleAuthError(e)) toast(errMsg(e)); });
+    };
+    $('#gqHint', box).onclick = function () { usedHint = true; this.disabled = true; SND.play('tap'); var ex = $('#gqExp', box); ex.hidden = false; ex.textContent = t('רמז:') + ' ' + q.hint; };
+  }
+  function answer(j, btn) {
+    clearInterval(p.timer);
+    $all('[data-a]', box).forEach(function (b) { b.disabled = true; });
+    if (btn) btn.classList.add('picked');
+    answers[qi] = j;
+    SND.play('drum');
+    api('quizCheck', Object.assign(authPayload(), { stationId: s.id, index: qi, answer: j })).then(function (r) {
+      var ex = $('#gqExp', box), q = qs[qi];
+      var rb = $('[data-a="' + r.correct + '"]', box); if (rb) rb.classList.add('right');
+      if (r.right) { right++; SND.play('correct'); SND.say([t('נכון מאוד!'), t('מצוין!'), t('בול!')][qi % 3]); }
+      else { if (btn) btn.classList.add('wrong'); SND.play('soft'); SND.say(j < 0 ? t('נגמר הזמן') : t('כמעט!')); }
+      ex.hidden = false;
+      ex.innerHTML = '<b>' + (r.right ? t('נכון!') : j < 0 ? t('נגמר הזמן.') : t('כמעט!')) + '</b> ' + esc(r.explain || (r.right ? '' : t('התשובה הנכונה מסומנת בירוק.')));
+      var nav = $('#gqNav', box), last = qi === qs.length - 1;
+      nav.hidden = false;
+      nav.innerHTML = '<span></span><button type="button" class="gbtn go" id="gqNext">' + (last ? t('לתוצאות') : t('לשאלה הבאה')) + '</button>';
+      $('#gqNext', box).onclick = function () { if (last) finish(); else { qi++; render(); } };
+      $('#gqNext', box).focus();
+      void q;
+    }).catch(function (e) { if (!handleAuthError(e)) { toast(errMsg(e)); intro(); } });
+  }
+  function finish() {
+    box.innerHTML = '<div class="spinner" role="status"></div>';
+    api('quizSubmit', Object.assign(authPayload(), { stationId: s.id, answers: answers.map(function (a) { return a < 0 ? -1 : a; }) })).then(function (res) {
+      var wasPassed = s.myQuiz && s.myQuiz.best >= s.passScore;
+      box.innerHTML = '<div class="qn" style="text-align:center">' + res.score + '</div><p style="text-align:center">' + esc(t('{r} מתוך {n} נכונות', { r: res.right, n: res.total })) + '. ' +
+        esc(res.passed ? t('עברת את השעשועון!') : t('כמעט! הציון העובר הוא {p}. אפשר לנסות שוב, ונשמר הציון הגבוה.', { p: s.passScore })) + '</p>' +
+        '<div class="grow end"><button type="button" class="gbtn ghost" id="gqAgain">' + t('עוד ניסיון') + '</button><button type="button" class="gbtn go" data-close>' + t('חזרה לחדר') + '</button></div>';
+      $('[data-close]', box).onclick = p.close;
+      $('#gqAgain', box).onclick = intro;
+      var m = (s.missions || []).filter(function (x) { return x.kind === 'quiz'; })[0];
+      if (res.passed) { SND.play('fanfare'); if (!wasPassed && m) earnFx(m, $('.qn', box), 20); }
+      gameApply(res.state);
+    }).catch(function (e) { if (!handleAuthError(e)) { toast(errMsg(e)); intro(); } });
+  }
+  if (!qs.length) { box.innerHTML = '<p>' + t('אין שאלות בשעשועון הזה.') + '</p>'; return; }
+  intro();
+}
+
+/* ---------- תיבת האוצר ---------- */
+function openChest(s) {
+  s = findStation(s.id);
+  var all = (s.missions || []).every(function (m) { return m.done; });
+  if (!all) {
+    var left = (s.missions || []).filter(function (m) { return !m.done; }).length;
+    var msg = t('התיבה נעולה. חסרות עוד {n} ספרות', { n: left });
+    bubble(msg); SND.play('soft'); SND.say(msg); return;
+  }
+  if (G.opened) { finalPanel(s); return; }
+  var digits = (s.missions || []).map(function (m) { return m.digit; });
+  var p = gpanel('<div class="kick">' + t('תיבת האוצר') + '</div><h2>' + t('הקלידו את הקוד') + '</h2><p class="gmuted">' + t('אספתם את כל הספרות. סובבו את המנעול!') + '</p>' +
+    '<div class="code big" dir="ltr">' + digits.map(function (d) { return '<span class="got">' + d + '</span>'; }).join('') + '</div>' +
+    '<div class="grow end"><button type="button" class="gbtn ghost" data-close>' + t('עוד רגע') + '</button><button type="button" class="gbtn gold" id="gOpen">' + t('פתיחת התיבה') + '</button></div>');
+  $('#gOpen', p.el).onclick = function () {
+    p.close(); SND.play('unlock'); G.opened = true;
+    var el = G.room.el;
+    $('.lock', el).classList.add('gone');
+    setTimeout(function () {
+      $('.lid', el).classList.add('open'); $('.rays', el).classList.add('on');
+      SND.play('fanfare'); confetti();
+      SND.say(s.badge ? t('כל הכבוד! פתחת את התיבה וקיבלת את התג {b}', { b: s.badgeName || t('תחנה {n}', { n: s.index }) }) : t('כל הכבוד! פתחת את התיבה'));
+    }, 600);
+    setTimeout(function () { finalPanel(findStation(s.id)); }, 2200);
+  };
+}
+function wallHtml(s) {
+  var w = s.wall || [];
+  if (!w.length) return '<p class="gmuted small">' + t('עדיין אין תוצרים משותפים בחדר הזה. אפשר להיות הראשונים!') + '</p>';
+  return w.map(function (x) {
+    return '<div class="post"><div><b>' + esc(x.name) + '</b><a href="' + esc(safeHref(x.link)) + '" target="_blank" rel="noopener noreferrer">' + t('לצפייה בתוצר') + '</a></div>' +
+      '<button type="button" class="heart' + (x.liked ? ' on' : '') + '" data-like="' + esc(x.id) + '" aria-pressed="' + x.liked + '" aria-label="' + esc(t('לב לתוצר של {n}', { n: x.name })) + '">' + ICON.heart + '<span class="num">' + x.likes + '</span></button></div>';
+  }).join('');
+}
+function finalPanel(s) {
+  var st = S.state, rating = s.rating && s.rating.mine || 0;
+  var p = gpanel((s.badge ? '<div class="badge-land">' + badgeSvg(s.index, true, 130) + '</div>' : '<div class="badge-land">' + ICON.trophy + '</div>') +
+    '<h2 style="text-align:center">' + esc(s.badge ? t('התג "{b}" שלך!', { b: s.badgeName || t('תג תחנה {n}', { n: s.index }) }) : t('פתחת את החדר!')) + '</h2>' +
+    '<p class="gmuted" style="text-align:center">' + esc(t('צברת {p} נקודות בחדר הזה.', { p: s.points || 0 })) + '</p>' +
+    '<label class="glabel" for="gRefl">' + t('יומן החוקר/ת: מה תיקחו מהחדר הזה לכיתה שלכם?') + '</label>' +
+    '<textarea class="ginput" id="gRefl" rows="3" maxlength="1500" placeholder="' + esc(t('למשל: אתן לתלמידים לשאול את ה-AI, ונבדוק יחד את התשובות בניסוי.')) + '">' + esc(s.reflection || '') + '</textarea>' +
+    '<div class="grow"><button type="button" class="gbtn go sm" id="gReflSave">' + (s.reflection ? t('עדכון היומן') : t('שמירה ביומן')) + '</button><span class="gmuted small" id="gReflMsg"></span></div>' +
+    '<span class="glabel">' + t('איך היה המפגש? (1 עד 10)') + '</span><div class="grate" role="group" aria-label="' + esc(t('דירוג המפגש')) + '">' + [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(function (n) { return '<button type="button" data-r="' + n + '" aria-pressed="' + (rating === n) + '" class="' + (rating && n <= rating ? 'on' : '') + '">' + n + '</button>'; }).join('') + '</div>' +
+    '<div class="g2"><div class="gbox"><h3>' + t('לוח המובילים') + '</h3>' + boardHtml(st.board) + '</div>' +
+    '<div class="gbox"><h3>' + t('קיר ההשראה') + '</h3>' +
+      (s.mySub ? '<label class="gcheck small"><input type="checkbox" id="gShare2"' + (s.mySub.share ? ' checked' : '') + '><span>' + t('לשתף גם את התוצר שלי') + '</span></label>' : '') +
+      '<div id="gWall">' + wallHtml(s) + '</div></div></div>' +
+    '<div class="grow end"><button type="button" class="gbtn ghost" data-close>' + t('חזרה לחדר') + '</button><button type="button" class="gbtn gold" id="gToMap">' + t('חזרה למפת המסע') + '</button></div>', { wide: true });
+  $('#gToMap', p.el).onclick = function () { p.close(); closeRoom(); };
+  $('#gReflSave', p.el).onclick = function () {
+    var btn = this, txt = $('#gRefl', p.el).value, had = !!(s.reflection && s.reflection.trim());
+    btn.disabled = true;
+    api('reflect', Object.assign(authPayload(), { stationId: s.id, text: txt })).then(function (st2) {
+      btn.disabled = false; $('#gReflMsg', p.el).textContent = t('נשמר ביומן');
+      if (!had && txt.trim()) { SND.play('coin'); floatPts(10, btn); SND.say(t('נשמר ביומן. כל הכבוד!')); }
+      gameApply(st2); s = findStation(s.id);
+    }).catch(function (e) { btn.disabled = false; if (!handleAuthError(e)) toast(errMsg(e)); });
+  };
+  $all('[data-r]', p.el).forEach(function (b) {
+    b.onclick = function () {
+      var v = +b.getAttribute('data-r'), had = !!(s.rating && s.rating.mine);
+      $all('[data-r]', p.el).forEach(function (x) { var n = +x.getAttribute('data-r'); x.classList.toggle('on', n <= v); x.setAttribute('aria-pressed', n === v); });
+      SND.play('tap');
+      api('rate', Object.assign(authPayload(), { stationId: s.id, value: v })).then(function (stats) {
+        s.rating = stats; if (!had) { floatPts(5, b); SND.play('coin'); toast(t('תודה על הדירוג')); refreshState(true); }
+      }).catch(function (e) { if (!handleAuthError(e)) toast(errMsg(e)); });
+    };
+  });
+  var sh = $('#gShare2', p.el);
+  if (sh) sh.onchange = function () {
+    api('shareSub', Object.assign(authPayload(), { stationId: s.id, share: sh.checked })).then(function (st2) { gameApply(st2); toast(sh.checked ? t('התוצר שלך מופיע עכשיו בקיר') : t('התוצר הוסר מהקיר')); })
+      .catch(function (e) { sh.checked = !sh.checked; if (!handleAuthError(e)) toast(errMsg(e)); });
+  };
+  function bindLikes() {
+    $all('[data-like]', p.el).forEach(function (b) {
+      b.onclick = function () {
+        var on = b.getAttribute('aria-pressed') !== 'true';
+        if (on) SND.play('heart');
+        api('like', Object.assign(authPayload(), { stationId: s.id, id: b.getAttribute('data-like'), on: on })).then(function (r) {
+          s.wall = r.wall; $('#gWall', p.el).innerHTML = wallHtml(s); bindLikes();
+        }).catch(function (e) { if (!handleAuthError(e)) toast(errMsg(e)); });
+      };
+    });
+  }
+  bindLikes();
 }
 
 /* =====================================================================
@@ -3068,6 +4632,7 @@ function topBarHtml(withGroups) {
     (withGroups && groups.length ? '<label class="sr-only" for="admGroup">' + t('קבוצה') + '</label><select id="admGroup" class="input" style="width:auto;min-width:160px;max-width:100%">' + groups.map(function (g) {
       return '<option value="' + esc(g.id) + '"' + (g.id === A.gid ? ' selected' : '') + '>' + esc(g.name) + ' (' + g.count + ')</option>';
     }).join('') + '</select>' : '') +
+    (withGroups && A.gid ? '<button type="button" class="btn sm" id="admPreview">' + ICON.play + t('תצוגת משתתף') + '</button>' : '') +
     (withGroups ? '<button type="button" class="btn sm" id="admNew">' + ICON.plus + t('קבוצה חדשה') + '</button>' +
       '<button type="button" class="btn sm ghost" id="admRefresh" aria-label="' + esc(t('רענון')) + '">' + ICON.refresh + '</button>' : '') +
     '<span class="spacer"></span>' +
@@ -3175,6 +4740,10 @@ function renderAdmin(keepScroll) {
   };
   $('#admNew').onclick = openNewGroup;
   if ($('#admNew2')) $('#admNew2').onclick = openNewGroup;
+  if ($('#admPreview')) $('#admPreview').onclick = function () {
+    if (A.dirty) { toast(t('שמרו קודם את השינויים, ואז פתחו את התצוגה.')); return; }
+    startPreview(A.data.group, { owner: true });
+  };
   $('#admRefresh').onclick = function () { (A.gid ? loadGroup(A.gid) : loadOverview()).then(function () { toast(t('הנתונים עודכנו')); }); };
   if ($('#trialPay')) $('#trialPay').onclick = function () { var m = modal({ title: t('מנוי ותשלום') }); m.body.innerHTML = paymentBoxHtml(); bindPayment(m.body); };
   $all('[data-tab]', v).forEach(function (b) { b.onclick = function () { A.tab = b.getAttribute('data-tab'); renderAdmin(); v.scrollTop = 0; if (A.tab === 'super' && !A.sup) loadSuper(); }; });
@@ -3281,10 +4850,13 @@ function tabTrack() {
       var c = M.colStats[i];
       return '<th title="' + esc(s.title) + '">' + (i + 1) + (c ? '<br><span class="num" style="font-weight:600;color:var(--muted)">' + c.done + '/' + c.total + '</span>' : '') + '</th>';
     }).join('') + '<th>' + t('סיום') + '</th></tr></thead><tbody>' + roster.map(function (p) {
-      return '<tr><td class="name" title="' + esc(p.email) + '">' + esc(p.name || p.email) + '<small dir="ltr">' + esc(p.email) + '</small></td>' + g.stations.map(function (s, i) {
+      var pts = d.points ? d.points[p.email] : null;
+      return '<tr><td class="name" title="' + esc(p.email) + '">' + esc(p.name || p.email) + (pts !== null && pts !== undefined ? ' <span class="pts-chip num">' + ICON.star + pts + '</span>' : '') + '<small dir="ltr">' + esc(p.email) + '</small></td>' + g.stations.map(function (s, i) {
         var c = cellFor(p, s, i);
-        var inner = '<span class="cell ' + c.cls + '">' + c.txt + '</span>' + (c.q !== undefined && c.q !== null ? '<span class="cell-q">' + c.q + '</span>' : '');
-        return '<td>' + (c.link ? '<a href="' + esc(safeHref(c.link)) + '" target="_blank" rel="noopener noreferrer" title="' + esc(t('פתיחת ההגשה')) + '">' + inner + '</a>' : inner) + '</td>';
+        var sub = c.link ? d.subs.filter(function (x) { return x.email === p.email && x.stationId === s.id; })[0] : null;
+        var inner = '<span class="cell ' + c.cls + '">' + c.txt + '</span>' + (c.q !== undefined && c.q !== null ? '<span class="cell-q">' + c.q + '</span>' : '') +
+          (sub && String(sub.checked) === 'TRUE' ? '<span class="fb-dot" title="' + esc(t('נבדק')) + '"></span>' : sub && sub.feedback ? '<span class="fb-dot half" title="' + esc(t('יש משוב')) + '"></span>' : '');
+        return '<td>' + (c.link ? '<button type="button" class="cellbtn" data-fb="' + esc(p.email) + '|' + esc(s.id) + '" title="' + esc(t('צפייה בהגשה ומשוב')) + '">' + inner + '</button>' : inner) + '</td>';
       }).join('') + (function () {
         var f = d.subs.filter(function (x) { return x.email === p.email && x.stationId === 'final'; })[0];
         var inner = '<span class="cell ' + (f ? 'v' : 'x') + '">' + (f ? ICON.check : ICON.x) + '</span>';
@@ -3329,6 +4901,7 @@ function bindTrack() {
   };
   var cp = $('#csvCopy');
   if (cp) cp.onclick = function () { copyText(buildRows().map(function (r) { return r.map(function (c) { return csvCell(c).replace(/\t/g, ' '); }).join('\t'); }).join('\n'), t('הטבלה הועתקה. אפשר להדביק ב-Excel או ב-Sheets.')); };
+  $all('[data-fb]').forEach(function (b) { b.onclick = function () { var pr = b.getAttribute('data-fb').split('|'); openFeedback(pr[0], pr[1]); }; });
   var mc = $('#missCopy');
   if (mc) mc.onclick = function () {
     var val = $('#missSel').value, d = A.data, M = trackModel(), list;
@@ -3394,7 +4967,9 @@ function stationEditor(s, i, warn) {
       return '<div class="q-edit">' + fld(t('שאלה {n}', { n: k + 1 }), qp + 'q', q.q) +
         '<div class="field"><label for="qo_' + i + '_' + k + '">' + t('תשובות (שורה לכל תשובה)') + '</label><textarea class="input" id="qo_' + i + '_' + k + '" data-b="' + qp + 'options" data-kind="lines" data-opts="' + i + ':' + k + '" rows="4">' + esc(q.options.join('\n')) + '</textarea></div>' +
         '<div class="row"><label class="lbl" for="qc_' + i + '_' + k + '">' + t('התשובה הנכונה:') + '</label><select class="input" style="width:auto;flex:1;min-width:160px" id="qc_' + i + '_' + k + '" data-b="' + qp + 'correct" data-kind="num">' + optionList(q) + '</select>' +
-        '<button type="button" class="btn sm danger" data-qdel="' + i + ':' + k + '">' + ICON.trash + t('מחיקת שאלה') + '</button></div></div>';
+        '<button type="button" class="btn sm danger" data-qdel="' + i + ':' + k + '">' + ICON.trash + t('מחיקת שאלה') + '</button></div>' +
+        '<div class="grid2">' + fld(t('הסבר אחרי התשובה (רשות)'), qp + 'explain', q.explain || '', { type: 'textarea', rows: 2, ph: t('למה זו התשובה הנכונה? יוצג אחרי שעונים.') }) +
+        fld(t('רמז (רשות)'), qp + 'hint', q.hint || '', { ph: t('רמז קטן שאפשר לבקש בשעשועון') }) + '</div></div>';
     }).join('') + '<button type="button" class="btn sm" data-qadd="' + i + '" style="justify-self:start">' + ICON.plus + t('הוספת שאלה') + '</button></div>';
   h += '<div class="row" style="justify-content:space-between;border-top:1px solid var(--line);padding-top:12px"><div class="row">' +
     '<button type="button" class="btn sm" data-stmv="' + i + ':-1"' + (i === 0 ? ' disabled' : '') + '>' + ICON.down + t('מוקדם יותר (למטה במפה)') + '</button>' +
@@ -3769,6 +5344,28 @@ function openAccount() {
   });
 }
 
+/* ---------- משוב על הגשה ---------- */
+function openFeedback(email, sid) {
+  var d = A.data, g = d.group, s = g.stations.filter(function (x) { return x.id === sid; })[0];
+  var p = d.roster.filter(function (r) { return r.email === email; })[0] || { email: email, name: '' };
+  var sub = d.subs.filter(function (x) { return x.email === email && x.stationId === sid; })[0];
+  if (!s || !sub) return;
+  var refl = (d.reflections || []).filter(function (r) { return String(r.email).toLowerCase() === email && r.stationId === sid; })[0];
+  var m = modal({ title: (p.name || p.email) + ' · ' + t('תחנה {n}', { n: g.stations.indexOf(s) + 1 }), eyebrow: esc(s.title) });
+  m.body.innerHTML = '<section><div class="row" style="justify-content:space-between"><b>' + t('ההגשה') + '</b><span class="small muted">' + esc(fmtStamp(sub.time)) + (String(sub.share) === 'TRUE' ? ' · ' + t('שותף בקיר ההשראה') : '') + '</span></div>' +
+    '<a class="btn sm" href="' + esc(safeHref(sub.link)) + '" target="_blank" rel="noopener noreferrer" style="justify-self:start">' + ICON.ext + t('פתיחת ההגשה') + '</a></section>' +
+    (refl && refl.text ? '<section><b>' + t('יומן החוקר/ת') + '</b><p class="box">' + esc(refl.text) + '</p></section>' : '') +
+    '<section><div class="field"><label for="fbText">' + t('משוב למשתלם/ת (יוצג בתחנה שלו/ה)') + '</label><textarea id="fbText" class="input" rows="4" maxlength="1000" placeholder="' + esc(t('למשל: שאלת חקר מצוינת! נסו להוסיף גם משתנה קבוע.')) + '">' + esc(sub.feedback || '') + '</textarea></div>' +
+    '<label class="check"><input type="checkbox" id="fbChecked"' + (String(sub.checked) !== 'FALSE' ? ' checked' : '') + '><span>' + t('לסמן כ"נבדק"') + '</span></label>' +
+    '<div class="row"><button type="button" class="btn primary" id="fbSave">' + t('שליחת משוב') + '</button></div></section>';
+  $('#fbSave', m.body).onclick = function () {
+    var btn = this; btn.disabled = true;
+    adminCall('adminFeedback', { groupId: A.gid, email: email, stationId: sid, text: $('#fbText', m.body).value, checked: $('#fbChecked', m.body).checked }).then(function (dd) {
+      A.data = dd; m.close(); renderAdmin(true); toast(t('המשוב נשלח. המשתלם/ת יראה אותו בתחנה.'));
+    }).catch(function (e) { btn.disabled = false; adminErr(e); });
+  };
+}
+
 /* ---------- ייבוא סילבוס מקובץ (AI) ---------- */
 function groupHasActivity() { return !!(A.data && (A.data.subs.length || A.data.quiz.length)); }
 function importCardHtml() {
@@ -3945,6 +5542,7 @@ function lecturerRow(L) {
     '<input type="date" class="input" id="date_' + esc(L.id) + '" style="width:auto" hidden aria-label="' + esc(t('עד תאריך')) + '">' +
     '<button type="button" class="btn sm primary" data-approve="' + esc(L.id) + '">' + ICON.check + (L.payClaimed ? t('אישור תשלום') : t('הפעלה / הארכה')) + '</button>' +
     (L.status === 'blocked' ? '<button type="button" class="btn sm" data-unblock="' + esc(L.id) + '">' + t('ביטול חסימה') + '</button>' : '<button type="button" class="btn sm danger" data-block="' + esc(L.id) + '">' + t('חסימה') + '</button>') +
+    (L.groups ? '<button type="button" class="btn sm" data-lgroups="' + esc(L.id) + '">' + ICON.play + t('קבוצות ותצוגה') + '</button>' : '') +
     '</div></div>';
 }
 function bindSuper() {
@@ -3961,6 +5559,22 @@ function bindSuper() {
       var payload = { lecturerId: id, op: 'approve' };
       if (per === 'date') { var dv = $('#date_' + id).value; if (!dv) { toast(t('בחרו תאריך')); return; } payload.until = dv; } else payload.months = Number(per);
       confirmDialog(t('להפעיל את החשבון של {n}?', { n: L.name }), t('אישור')).then(function (ok) { if (ok) upd(payload, t('החשבון הופעל')); });
+    };
+  });
+  $all('[data-lgroups]', v).forEach(function (b) {
+    b.onclick = function () {
+      var id = b.getAttribute('data-lgroups'), L = A.sup.lecturers.filter(function (x) { return x.id === id; })[0];
+      adminCall('superGroups', { lecturerId: id }).then(function (r) {
+        var m = modal({ title: t('הקבוצות של {n}', { n: L.name }) });
+        m.body.innerHTML = '<p class="small muted">' + t('התצוגה מראה את התוכן והעיצוב בלבד, בלי שמות ונתונים של משתתפים.') + '</p><div class="items">' + r.groups.map(function (g) {
+          return '<div class="item"><span class="ic">' + ICON.flag + '</span><div class="tx"><b>' + esc(g.name) + '</b><span>' + esc(t('{p} משתלמים', { p: g.count })) + '</span></div><button type="button" class="btn sm primary" data-pv="' + esc(g.id) + '">' + ICON.play + t('תצוגה') + '</button></div>';
+        }).join('') + '</div>';
+        $all('[data-pv]', m.body).forEach(function (pb) {
+          pb.onclick = function () {
+            adminCall('superGroupContent', { groupId: pb.getAttribute('data-pv') }).then(function (rr) { m.close(); startPreview(rr.group, { owner: false }); }).catch(adminErr);
+          };
+        });
+      }).catch(adminErr);
     };
   });
   $all('[data-block]', v).forEach(function (b) {
@@ -4006,6 +5620,67 @@ function renderDemoBar() {
       lsDel('db'); lsDel('session'); lsDel('lec'); lsDel('lastGroup'); location.reload();
     });
   };
+}
+
+/* =====================================================================
+   Course-Manager – תצוגת משתתף למרצה ולמנהלת: האפליקציה רצה בדפדפן
+   על עותק מקומי של הקבוצה, ושום דבר לא נשמר בשרת
+   ===================================================================== */
+var PV = null;
+function startPreview(group, opts) {
+  opts = opts || {};
+  var g = JourneyCore.clone(group);
+  PV = { group: JourneyCore.clone(group), allOpen: !!opts.allOpen, owner: !!opts.owner };
+  if (PV.allOpen) g.stations.forEach(function (s) { s.mode = 'open'; });
+  var email = 'preview@local', lim = {};
+  var data = {
+    settings: {}, lecturers: [], codes: [], templates: [],
+    groups: {}, roster: {}, subs: {}, quiz: {}, ratings: {},
+    players: {}, progress: {}, reflections: {}, likes: {}
+  };
+  data.groups[g.id] = g;
+  data.roster[g.id] = [{ email: email, name: t('תצוגת מרצה'), pin: '' }];
+  data.players[g.id] = [{ email: email, nick: t('תצוגה'), avatar: JSON.stringify({ style: 'bun', skin: '#F2C6A0', shirt: '#3FE0D0' }), board: 'TRUE', time: '' }];
+  PREVIEW_API = JourneyCore.createApi(MemStore(data, function () { /* לא נשמר */ }), {
+    now: nowIsrael, ms: function () { return Date.now(); }, sign: simpleHash, rand: rand6,
+    hashPw: function (pw, salt) { return simpleHash(pw + '|' + salt); }, sendMail: function () { /* אין */ },
+    limiter: { count: function (k) { return lim[k] || 0; }, hit: function (k) { lim[k] = (lim[k] || 0) + 1; }, clear: function (k) { delete lim[k]; } }
+  });
+  var r = PREVIEW_API({ action: 'login', groupId: g.id, email: email, pin: '1234' });
+  if (!r.ok) { PREVIEW_API = null; toast(errMsg(r)); return; }
+  PV.saved = { session: S.session, state: S.state };
+  S.session = { groupId: g.id, email: email, name: t('תצוגת מרצה'), token: r.data.token };
+  S.preview = true;
+  modalStack.slice().forEach(function (m) { m.close(); });
+  clearInterval(A.poll);
+  adminView().hidden = true;
+  $('#loginView').hidden = true;
+  renderPreviewBar();
+  enterApp();
+}
+function renderPreviewBar() {
+  var bar = $('#previewBar');
+  if (!bar) { bar = document.createElement('div'); bar.id = 'previewBar'; bar.className = 'pv-bar'; bar.setAttribute('dir', 'rtl'); $('#appView').insertBefore(bar, $('#appView').firstChild); }
+  bar.hidden = false;
+  bar.innerHTML = '<b>' + t('תצוגת משתתף') + '</b><span>' + t('כך המשתתפים רואים את הקבוצה. אפשר לנסות הכול, ושום דבר לא נשמר.') + '</span>' +
+    '<label class="check"><input type="checkbox" id="pvAll"' + (PV.allOpen ? ' checked' : '') + '><span>' + t('לפתוח את כל התחנות') + '</span></label>' +
+    '<button type="button" class="btn sm" id="pvExit">' + ICON.back + t('סיום התצוגה') + '</button>';
+  $('#pvExit').onclick = exitPreview;
+  $('#pvAll').onchange = function () { var owner = PV.owner, gr = PV.group, all = this.checked; startPreview(gr, { owner: owner, allOpen: all }); };
+}
+function exitPreview() {
+  if (!PV) return;
+  closeRoom();
+  modalStack.slice().forEach(function (m) { m.close(); });
+  clearInterval(S.poll);
+  PREVIEW_API = null; S.preview = false;
+  S.session = PV.saved.session; S.state = PV.saved.state; PV = null;
+  var bar = $('#previewBar'); if (bar) bar.hidden = true;
+  $('#appView').hidden = true;
+  document.body.style.overflow = 'hidden';
+  adminView().hidden = false;
+  renderAdmin(true);
+  if (A.gid) { clearInterval(A.poll); loadGroup(A.gid); }
 }
 
 boot();
